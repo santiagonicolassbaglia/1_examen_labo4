@@ -8,6 +8,20 @@
     <p>Esta es la página de inicio</p>
 
     
-
-    <button routerLink="/login" class="btn btn-primary">Ingresar</button>
-</div>
+    <div class="container">
+        <h1>Buscar Perfil de GitHub</h1>
+        <form (ngSubmit)="getUserProfile()">
+          <div class="form-group">
+            <input type="text" class="form-control" [(ngModel)]="username" name="username" placeholder="Ingresa nombre de usuario de GitHub" required>
+          </div>
+          <button type="submit" class="btn btn-primary mt-2">Buscar</button>
+        </form>
+      
+        <div *ngIf="user" class="mt-4">
+          <h2>{{ user.name }}</h2>
+          <p>{{ user.bio }}</p>
+          <img [src]="user.avatar_url" alt="GitHub Avatar" width="150">
+          <p><a [href]="user.html_url" target="_blank">Ver perfil en GitHub</a></p>
+        </div>
+      </div>
+      

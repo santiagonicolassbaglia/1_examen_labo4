@@ -1,14 +1,1 @@
-<div *ngIf="productoSeleccionado">
-    <h2>Detalle del Producto</h2>
-    <p><strong>Código:</strong> {{ productoSeleccionado.codigo }}</p>
-    <p><strong>Descripción:</strong> {{ productoSeleccionado.descripcion }}</p>
-    <p><strong>Precio:</strong> {{ productoSeleccionado.precio }}</p>
-    <p><strong>Stock:</strong> {{ productoSeleccionado.stock }}</p>
-  
-    <h2>País de Origen</h2>
-    <p><strong>Nombre:</strong> {{ productoSeleccionado.paisOrigen }}</p>
-    <p><strong>Código:</strong> {{ getPaisOrigen()?.codigo }}</p>
-    <p><strong>Bandera:</strong></p>
-    <img *ngIf="getPaisOrigen()?.banderaUrl" [src]="getPaisOrigen()?.banderaUrl" alt="Bandera de {{ getPaisOrigen()?.nombre }}" width="100">
-  </div>
-  
+<button routerLink="/listadoProductos" class="btn btn-primary">Ver Listado de Productos</button>

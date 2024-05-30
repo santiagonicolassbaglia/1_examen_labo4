@@ -25,12 +25,12 @@ export class ListadoProductoComponent implements OnInit {
     this.productoService.getProductosConStock().subscribe((productos) => {
       this.productos = productos.map((productoData: any) => {
         return new Producto(
-          productoData.id,
+          productoData.codigo,
           productoData.descripcion,
           productoData.precio,
           productoData.stock,
-          '',   
-          false  
+          productoData.paisOrigen,
+          productoData.comestible
         );
       });
     });

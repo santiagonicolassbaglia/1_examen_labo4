@@ -15,6 +15,7 @@ export const routes: Routes = [
 { path: 'detalleProducto', loadComponent: () => import('./componentes/detalle-producto/detalle-producto.component').then(m => m.DetalleProductoComponent)},
 { path: 'detallePais', loadComponent: () => import('./componentes/detalle-pais/detalle-pais.component').then(m => m.DetallePaisComponent)},
 { path: 'producpais', loadComponent: () => import('./componentes/productpais/productpais.component').then(m => m.ProductpaisComponent)},
+{path: 'listadoProductos', loadComponent: () => import('./componentes/listado-producto/listado-producto.component').then(m => m.ListadoProductoComponent), canActivate: [logueadoGuard]},
  
     { path: '', redirectTo: 'login', pathMatch: 'full' },
     { path: '**', redirectTo: 'paginaError' }

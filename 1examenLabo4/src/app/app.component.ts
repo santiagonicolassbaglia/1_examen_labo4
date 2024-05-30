@@ -12,11 +12,12 @@ import { ProductoComponent } from './componentes/producto/producto.component';
 import { ProductpaisComponent } from './componentes/productpais/productpais.component';
 import { DetallePaisComponent } from './componentes/detalle-pais/detalle-pais.component';
 import { DetalleProductoComponent } from './componentes/detalle-producto/detalle-producto.component';
+import { ListadoProductoComponent } from './componentes/listado-producto/listado-producto.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet,FormsModule,RouterLink,LoginComponent,PaginaErrorComponent,RegistroComponent,HomeComponent,HomeAdminComponent,ProductoComponent,ProductpaisComponent,DetallePaisComponent,DetalleProductoComponent],
+  imports: [RouterOutlet,FormsModule,RouterLink,LoginComponent,PaginaErrorComponent,RegistroComponent,HomeComponent,HomeAdminComponent,ProductoComponent,ProductpaisComponent,DetallePaisComponent,DetalleProductoComponent,ListadoProductoComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

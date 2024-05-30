@@ -1,0 +1,12 @@
+<div class="container">
+    <div class="row">
+      <div class="col-12">
+        <h2>Listado de Productos</h2>
+        <ul class="list-group">
+          <li *ngFor="let producto of productos" class="list-group-item" (click)="seleccionarProducto(producto)">
+            {{ producto.descripcion }} - {{ producto.codigo }}
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>

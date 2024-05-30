@@ -12,6 +12,10 @@ export const routes: Routes = [
     { path: 'pagina-error', loadComponent: () => import('./componentes/pagina-error/pagina-error.component').then(m => m.PaginaErrorComponent) },
     {path: 'producto', loadComponent: () => import('./componentes/producto/producto.component').then(m => m.ProductoComponent), canActivate: [logueadoGuard]},
 { path: 'seleccionPais', loadComponent: () => import('./componentes/seleccionpais/seleccionpais.component').then(m => m.SeleccionpaisComponent)},
+{ path: 'detalleProducto', loadComponent: () => import('./componentes/detalle-producto/detalle-producto.component').then(m => m.DetalleProductoComponent)},
+{ path: 'detallePais', loadComponent: () => import('./componentes/detalle-pais/detalle-pais.component').then(m => m.DetallePaisComponent)},
+{ path: 'producpais', loadComponent: () => import('./componentes/productpais/productpais.component').then(m => m.ProductpaisComponent)},
+ 
     { path: '', redirectTo: 'login', pathMatch: 'full' },
     { path: '**', redirectTo: 'paginaError' }
 ];

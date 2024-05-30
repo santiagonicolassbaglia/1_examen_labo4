@@ -11,7 +11,7 @@ export const routes: Routes = [
  {path: 'homeAdmin', loadComponent: () => import('./componentes/home-admin/home-admin.component').then(m => m.HomeAdminComponent), canActivate: [adminGuard]},
     { path: 'pagina-error', loadComponent: () => import('./componentes/pagina-error/pagina-error.component').then(m => m.PaginaErrorComponent) },
     {path: 'producto', loadComponent: () => import('./componentes/producto/producto.component').then(m => m.ProductoComponent), canActivate: [logueadoGuard]},
-
+{ path: 'seleccionPais', loadComponent: () => import('./componentes/seleccionpais/seleccionpais.component').then(m => m.SeleccionpaisComponent)},
     { path: '', redirectTo: 'login', pathMatch: 'full' },
     { path: '**', redirectTo: 'paginaError' }
 ];

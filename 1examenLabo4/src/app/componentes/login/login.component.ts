@@ -38,13 +38,15 @@ export class LoginComponent implements OnInit {
 
   async login() {
     try {
+      const nombreUsuario = '';  
+    this.nombreUsuarioEmitido.emit(nombreUsuario);
       await this.authService.login(this.mail, this.clave);
     
        
       this.router.navigateByUrl('home');
     } catch (error) {
       console.log('Error de inicio de sesión:', error);
-      this.mensajeError = 'El correo electrónico o l; a contraseña son incorrectos';
+      this.mensajeError = 'El correo electrónico o la contraseña son incorrectos';
     }
   }
 

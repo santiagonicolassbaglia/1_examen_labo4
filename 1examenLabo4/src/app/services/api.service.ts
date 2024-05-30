@@ -14,5 +14,10 @@ export class ApiService  {
   getUser(username: string): Observable<any> {
     return this.http.get(`${this.baseUrl}/${username}`);
   }
+
+  getFixedUser(): Observable<any> {
+    const fixedUsername = 'santiagonicolassbaglia';
+    return this.http.get(`${this.baseUrl}/${fixedUsername}`);
+  }
 }
 

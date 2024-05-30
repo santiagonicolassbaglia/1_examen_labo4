@@ -2,7 +2,7 @@
     width: 100%; /* Ancho igual al ancho de la ventana */
     height: 100vh; /* Altura igual a la altura de la ventana */
     padding: 0px;
-    background-image: url("../../../assets/environments/imagenes/Fondopc1.jpg");
+    background-image: url("../../../assets/environments/imagenes/utnDibujo.jpg");
     background-size: cover ;
     background-repeat:initial;
     background-attachment: fixed;

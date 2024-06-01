@@ -1,34 +1,41 @@
-import { Component, Input } from '@angular/core';
+import { Component } from '@angular/core';
 import { Producto } from '../../clases/producto';
 import { Pais } from '../../clases/pais';
 import { NgIf } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { DetalleProductoComponent } from '../detalle-producto/detalle-producto.component';
+import { DetallePaisComponent } from '../detalle-pais/detalle-pais.component';
+import { ListadoProductoComponent } from '../listado-producto/listado-producto.component';
+import { ProductoService } from '../../services/producto.service';
 
 @Component({
   selector: 'app-productpais',
   standalone: true,
-  imports: [NgIf,RouterLink,FormsModule,RouterLink,ReactiveFormsModule],
+  imports: [NgIf, RouterLink, FormsModule, ReactiveFormsModule, DetalleProductoComponent, DetallePaisComponent, ListadoProductoComponent],
   templateUrl: './productpais.component.html',
-  styleUrl: './productpais.component.css'
+  styleUrls: ['./productpais.component.css']
 })
 export class ProductpaisComponent {
-  @Input() productoSeleccionado: Producto | null = null;
+  productoSeleccionado: Producto | null = null;
 
-  constructor() {}
+  constructor(private productoService: ProductoService) {}
+
+  seleccionarProducto(producto: Producto) {
+    this.productoSeleccionado = producto;
+  }
 
   getPaisOrigen(): Pais | null {
     if (this.productoSeleccionado) {
       return new Pais(
         this.productoSeleccionado.paisOrigen,
         this.productoSeleccionado.codigo,
-        `../../../assets/environments/imagenes/paises/${this.productoSeleccionado.paisOrigen.toLowerCase()}.png
-        `,
-        this.productoSeleccionado.paisOrigen
+        `../../../assets/environments/imagenes/paises/${this.productoSeleccionado.paisOrigen.toLowerCase()}.png`,
+        `../../../assets/environments/imagenes/banderas/${this.productoSeleccionado.paisOrigen.toLowerCase()}.png`   
+     
       );
     }
+    
     return null;
   }
 }
-
-

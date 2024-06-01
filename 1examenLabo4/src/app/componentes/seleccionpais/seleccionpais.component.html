@@ -4,6 +4,7 @@
     <li *ngFor="let pais of paises" class="list-group-item" (click)="seleccionarPais(pais)">
       <img [src]="pais.banderaUrl" alt="{{ pais.nombre }} bandera" style="width: 20px; height: 20px; margin-right: 10px;">
       {{ pais.nombre }}
+     
     </li>
   </ul>
 </div>

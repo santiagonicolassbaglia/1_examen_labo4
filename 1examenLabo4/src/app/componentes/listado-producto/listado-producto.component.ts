@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Output, EventEmitter, OnInit } from '@angular/core';
 import { Producto } from '../../clases/producto';
 import { ProductoService } from '../../services/producto.service';
 import { NgFor } from '@angular/common';
@@ -8,12 +8,12 @@ import { NgFor } from '@angular/common';
   standalone: true,
   imports: [NgFor],
   templateUrl: './listado-producto.component.html',
-  styleUrl: './listado-producto.component.css'
+  styleUrls: ['./listado-producto.component.css']
 })
 export class ListadoProductoComponent implements OnInit {
   
   productos: Producto[] = [];
-  productoSeleccionado: Producto | null = null;
+  @Output() productoSeleccionado = new EventEmitter<Producto>();
 
   constructor(private productoService: ProductoService) {}
 
@@ -37,6 +37,6 @@ export class ListadoProductoComponent implements OnInit {
   }
 
   seleccionarProducto(producto: Producto) {
-    this.productoSeleccionado = producto;
+    this.productoSeleccionado.emit(producto);
   }
 }

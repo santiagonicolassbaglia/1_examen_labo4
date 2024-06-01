@@ -1,4 +1,51 @@
-.container {
-    max-width: 960px;
-  }
-  
+/* Estilos para el formulario de producto */
+form {
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+}
+
+/* Estilos para los campos de entrada */
+.form-label {
+  font-weight: bold;
+}
+
+.form-control {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+/* Estilos para mensajes de error */
+.text-danger {
+  color: #dc3545;
+}
+
+/* Estilos para el botón de submit */
+.btn-primary {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+}
+
+/* Estilos para el contenedor de mensaje de error */
+.text-danger {
+  margin-top: 10px;
+}
+
+/* Estilos para el componente de selección de país */
+.app-seleccionpais {
+  margin-bottom: 20px;
+}

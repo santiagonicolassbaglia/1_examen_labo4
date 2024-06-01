@@ -28,9 +28,9 @@ export class SeleccionpaisComponent {
 
   cargarPaises() {
     this.paises = [
-      { nombre: 'Argentina', banderaUrl: '../../../assets/environments/imagenes/paises/argentinajpg.jpg', codigo: 'AR', continente: 'America' },
-      { nombre: 'Brasil', banderaUrl: '../../../assets/environments/imagenes/paises/brasil.png', codigo: 'BR', continente: 'America' },
-      { nombre: 'Chile', banderaUrl: '../../../assets/environments/imagenes/paises/chile.png', codigo: 'CL', continente: 'America' },
+      { nombre: 'Argentina', banderaUrl: '../../../assets/environments/argentinajpg.jpg', codigo: 'AR', continente: 'America' },
+      { nombre: 'Brasil', banderaUrl: '../../../assets/environments/imagenes/paises/brasil.jpg', codigo: 'BR', continente: 'America' },
+      { nombre: 'Chile', banderaUrl: '../../../assets/environments/imagenes/paises/chile.jpg', codigo: 'CL', continente: 'America' },
     ];
   }
 

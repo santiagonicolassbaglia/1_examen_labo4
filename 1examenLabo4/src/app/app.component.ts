@@ -13,11 +13,12 @@ import { ProductpaisComponent } from './componentes/productpais/productpais.comp
 import { DetallePaisComponent } from './componentes/detalle-pais/detalle-pais.component';
 import { DetalleProductoComponent } from './componentes/detalle-producto/detalle-producto.component';
 import { ListadoProductoComponent } from './componentes/listado-producto/listado-producto.component';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet,FormsModule,RouterLink,LoginComponent,PaginaErrorComponent,RegistroComponent,HomeComponent,HomeAdminComponent,ProductoComponent,ProductpaisComponent,DetallePaisComponent,DetalleProductoComponent,ListadoProductoComponent],
+  imports: [RouterOutlet,FormsModule,CommonModule,RouterLink,LoginComponent,PaginaErrorComponent,RegistroComponent,HomeComponent,HomeAdminComponent,ProductoComponent,ProductpaisComponent,DetallePaisComponent,DetalleProductoComponent,ListadoProductoComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

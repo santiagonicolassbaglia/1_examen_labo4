@@ -32,6 +32,13 @@
   </div>
 
   <div class="mb-3">
+    <label for="continente" class="form-label">Continente:</label>
+    <select id="continente" formControlName="continente" class="form-control">
+      <option *ngFor="let continente of continentes" [value]="continente">{{ continente }}</option>
+    </select>
+  </div>
+
+  <div class="mb-3">
     <label for="paisOrigen" class="form-label">País de Origen:</label>
     <input id="paisOrigen" formControlName="paisOrigen" type="text" class="form-control" readonly required>
     <div *ngIf="productoForm.get('paisOrigen')?.invalid && productoForm.get('paisOrigen')?.touched" class="text-danger">
@@ -49,8 +56,8 @@
       Este campo es requerido.
     </div>
   </div>
-
-  <app-seleccionpais (paisSeleccionado)="onPaisSeleccionado($event)"></app-seleccionpais>
+  <app-seleccionpais (paisSeleccionado)="onPaisSeleccionado($event)" [paises]="paises$ | async"></app-seleccionpais>
+  
   <button type="submit" class="btn btn-primary" [disabled]="productoForm.invalid">Agregar Producto</button>
   <div *ngIf="mensajeError" class="text-danger">{{ mensajeError }}</div>
 </form>

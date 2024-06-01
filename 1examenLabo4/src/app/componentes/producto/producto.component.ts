@@ -4,29 +4,32 @@ import { Router, RouterLink } from '@angular/router';
 import { ProductoService } from '../../services/producto.service';
 import { Producto } from '../../clases/producto';
 import { AuthService } from '../../services/auth.service';
-import { NgIf } from '@angular/common';
 import { Pais } from '../../clases/pais';
 import { SeleccionpaisComponent } from '../seleccionpais/seleccionpais.component';
 import { PaisService } from '../../services/pais.service';
+import { Observable } from 'rxjs';
+import { switchMap, startWith } from 'rxjs/operators';
+import { CommonModule } from '@angular/common';
+
 @Component({
   selector: 'app-producto',
   standalone: true,
-  imports: [NgIf,FormsModule,RouterLink,ReactiveFormsModule,SeleccionpaisComponent],
+  imports: [CommonModule, FormsModule, RouterLink, ReactiveFormsModule, SeleccionpaisComponent],
   templateUrl: './producto.component.html',
-  styleUrl: './producto.component.css'
+  styleUrls: ['./producto.component.css']
 })
 export class ProductoComponent implements OnInit {
-
-
   productoForm: FormGroup;
   mensajeError: string = '';
   paisSeleccionado: Pais | null = null;
-  continenteSeleccionado: string = 'America';
+  paises$: Observable<Pais[]> | undefined;
+  continentes = ['Africa','Americas','Asia','Europe','Oceania'];
 
   constructor(
     private fb: FormBuilder,
     private productoService: ProductoService,
     private authService: AuthService,
+    private paisService: PaisService,
     private router: Router
   ) {
     this.productoForm = this.fb.group({
@@ -35,14 +38,25 @@ export class ProductoComponent implements OnInit {
       precio: ['', [Validators.required, Validators.min(0)]],
       stock: ['', [Validators.required, Validators.min(0)]],
       paisOrigen: ['', [Validators.required]],
-      comestible: [false, [Validators.required]]
+      comestible: [false, [Validators.required]],
+      continente: ['Americas', [Validators.required]]
     });
+
+    // Initialize paises observable
+    this.paises$ = this.productoForm.get('continente')?.valueChanges.pipe(
+      startWith(this.productoForm.get('continente')?.value),
+      switchMap(continente => this.cargarPaisesPorContinente(continente))
+    );
   }
 
   ngOnInit(): void {
     if (!this.authService.estaLogueado()) {
       this.router.navigate(['/login']);
     }
+  }
+
+  cargarPaisesPorContinente(continente: string): Observable<Pais[]> {
+    return this.paisService.obtenerPaisesPorContinente(continente);
   }
 
   onPaisSeleccionado(pais: Pais) {

@@ -1,4 +1,4 @@
-<div *ngIf="paises.length > 0">
+<div *ngIf="paises && paises.length > 0">
   <h2>Selecciona un país:</h2>
   <ul>
     <li *ngFor="let pais of paises" (click)="seleccionarPais(pais)">
@@ -7,6 +7,6 @@
     </li>
   </ul>
 </div>
-<div *ngIf="paises.length === 0">
+<div *ngIf="!paises || paises.length === 0">
   <p>Cargando países...</p>
 </div>

@@ -24,4 +24,19 @@ import { HttpClient } from '@angular/common/http';
       })
     );
   }
+
+  obtenerPaisesPorContinente(continente: string): Observable<Pais[]> {
+    return this.http.get<any[]>(this.ruta).pipe(
+      map(response => {
+        return response
+          .filter(pais => pais.region === continente)
+          .map(pais => ({
+            nombre: pais.name.common,
+            banderaUrl: pais.flags.png,
+            codigo: pais.cca2,
+            continente: pais.region
+          } as Pais));
+      })
+    );
+  }
 }

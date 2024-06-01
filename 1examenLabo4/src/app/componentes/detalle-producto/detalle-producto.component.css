@@ -1,0 +1,16 @@
+.detalle-pais {
+    display: flex;
+    align-items: center;
+  }
+  
+  .detalle-pais img {
+    margin-right: 1rem;
+    width: 100px;
+    height: auto;
+    border-radius: 0.3rem;
+  }
+  
+  .detalle-pais div {
+    font-size: 1.1rem;
+  }
+  

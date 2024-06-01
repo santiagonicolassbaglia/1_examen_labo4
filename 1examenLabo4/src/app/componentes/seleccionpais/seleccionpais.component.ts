@@ -22,16 +22,16 @@ export class SeleccionpaisComponent {
   @Output() paisSeleccionado = new EventEmitter<Pais>();
   paises: Pais[] = [];
 
+  constructor(private paisService: PaisService) {}
+
   ngOnInit(): void {
     this.cargarPaises();
   }
 
   cargarPaises() {
-    this.paises = [
-      { nombre: 'Argentina', banderaUrl: '../../../assets/environments/argentinajpg.jpg', codigo: 'AR', continente: 'America' },
-      { nombre: 'Brasil', banderaUrl: '../../../assets/environments/imagenes/paises/brasil.jpg', codigo: 'BR', continente: 'America' },
-      { nombre: 'Chile', banderaUrl: '../../../assets/environments/imagenes/paises/chile.jpg', codigo: 'CL', continente: 'America' },
-    ];
+    this.paisService.traerPaises().subscribe((paises) => {
+      this.paises = paises;
+    });
   }
 
   seleccionarPais(pais: Pais) {

@@ -1,23 +1,27 @@
 import { Injectable } from '@angular/core';
 import { Pais } from '../clases/pais';
-import { Observable, of } from 'rxjs';
+import { Observable, map, of } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
-})
-export class PaisService {private paises: Pais[] = [
-  new Pais('Argentina', 'AR', '../../assets/environments/imagenes/paises/argentinajpg.jpg', 'America'),
-  new Pais('Brasil', 'BR', '../../assets/environments/imagenes/paises/brasil.png', 'America'),
-  new Pais('Canada', 'CA', '../../assets/environments/imagenes/paises/canada.png', 'America'),
-  new Pais('Francia', 'FR', '../../assets/environments/imagenes/paises/francia.png', 'Europa'),
-  new Pais('Alemania', 'DE', '../../assets/environments/imagenes/paises/alemania.png', 'Europa'),
-  new Pais('Italia', 'IT', '../../assets/environments/imagenes/paises/italia.png', 'Europa'),
- 
-];
+})export class PaisService {
+  private ruta: string = 'https://restcountries.com/v3.1/all';
 
-constructor() {}
+  constructor(private http: HttpClient) {}
 
-obtenerPaisesPorContinente(continente: string): Observable<Pais[]> {
-  return of(this.paises.filter(pais => pais.continente === continente));
-}
+  traerPaises(): Observable<Pais[]> {
+    return this.http.get<any[]>(this.ruta).pipe(
+      map(response => {
+        return response.map(pais => {
+          return {
+            nombre: pais.name.common,
+            banderaUrl: pais.flags.png,
+            codigo: pais.cca2,
+            continente: pais.region
+          } as Pais;
+        });
+      })
+    );
+  }
 }

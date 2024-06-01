@@ -1,8 +1,13 @@
 export class Pais {
-    constructor(
-        public nombre: string,
-        public codigo: string,
-        public banderaUrl: string,
-        public continente: string
-      ) {}
+  nombre: string;
+  banderaUrl: string;
+  codigo: string;
+  continente: string;
+
+  constructor(nombre: string, codigo: string, banderaUrl: string, continente: string) {
+    this.nombre = nombre;
+    this.codigo = codigo;
+    this.banderaUrl = banderaUrl;
+    this.continente = continente;
+  }
 }

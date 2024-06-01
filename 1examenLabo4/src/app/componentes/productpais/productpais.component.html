@@ -1,15 +1,15 @@
 <div class="jumbotron">
-    <h1>Custom jumbotron</h1>
+ 
     <app-listado-producto (productoSeleccionado)="seleccionarProducto($event)"></app-listado-producto>
   </div>
   
-  <div class="background">
-    
-    <app-detalle-producto *ngIf="productoSeleccionado" [producto]="productoSeleccionado"></app-detalle-producto>
+  <div class="background" *ngIf="productoSeleccionado">
+    <h1>Detalle del Producto Seleccionado</h1>
+    <app-detalle-producto [producto]="productoSeleccionado"></app-detalle-producto>
   </div>
   
-  <div class="borders">
-   
-    <app-detalle-pais *ngIf="productoSeleccionado && productoSeleccionado.paisOrigen" [pais]="getPaisOrigen()"></app-detalle-pais>
+  <div class="borders" *ngIf="pais">
+    <h1>Datos del País de Origen</h1>
+    <app-detalle-pais [pais]="pais"></app-detalle-pais>
   </div>
   

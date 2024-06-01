@@ -8,6 +8,7 @@ import { DetalleProductoComponent } from '../detalle-producto/detalle-producto.c
 import { DetallePaisComponent } from '../detalle-pais/detalle-pais.component';
 import { ListadoProductoComponent } from '../listado-producto/listado-producto.component';
 import { ProductoService } from '../../services/producto.service';
+import { PaisService } from '../../services/pais.service';
 
 @Component({
   selector: 'app-productpais',
@@ -18,24 +19,28 @@ import { ProductoService } from '../../services/producto.service';
 })
 export class ProductpaisComponent {
   productoSeleccionado: Producto | null = null;
+  pais: Pais | null = null;
+  paises: Pais[] = [];
 
-  constructor(private productoService: ProductoService) {}
+  constructor(
+    private productoService: ProductoService,
+    private paisService: PaisService
+  ) {}
+
+  ngOnInit(): void {
+    this.paisService.traerPaises().subscribe((paises) => {
+      this.paises = paises;
+    });
+  }
 
   seleccionarProducto(producto: Producto) {
     this.productoSeleccionado = producto;
+    this.pais = this.getPaisOrigen(producto.paisOrigen);
   }
 
-  getPaisOrigen(): Pais | null {
-    if (this.productoSeleccionado) {
-      return new Pais(
-        this.productoSeleccionado.paisOrigen,
-        this.productoSeleccionado.codigo,
-        `../../../assets/environments/imagenes/paises/${this.productoSeleccionado.paisOrigen.toLowerCase()}.png`,
-        `../../../assets/environments/imagenes/banderas/${this.productoSeleccionado.paisOrigen.toLowerCase()}.png`   
-     
-      );
-    }
-    
-    return null;
+  getPaisOrigen(nombre: string): Pais | null {
+    return this.paises.find(
+      (pais) => pais.nombre.toLowerCase() === nombre.toLowerCase()
+    ) || null;
   }
 }

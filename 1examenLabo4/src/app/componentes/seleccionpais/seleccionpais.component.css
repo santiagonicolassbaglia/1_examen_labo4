@@ -1,27 +1,37 @@
-ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-  
-  li {
-    display: flex;
-    align-items: center;
-    padding: 0.5rem;
-    margin-bottom: 0.5rem;
-    cursor: pointer;
-    border: 1px solid #dee2e6;
-    border-radius: 0.3rem;
-  }
-  
-  li img {
-    margin-right: 0.5rem;
-    width: 50px;
-    height: auto;
-    border-radius: 0.3rem;
-  }
-  
-  li:hover {
-    background-color: #f8f9fa;
-  }
-  
+.pais-selector {
+  margin-top: 20px;
+}
+
+.pais-list {
+  max-height: 200px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 10px;
+  background-color: #f9f9f9;
+}
+
+.pais-list ul {
+  list-style: none;
+  padding: 0;
+}
+
+.pais-list li {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.pais-list li:hover {
+  background-color: #f0f0f0;
+}
+
+.pais-list img {
+  width: 30px;
+  height: 20px;
+  margin-right: 10px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}

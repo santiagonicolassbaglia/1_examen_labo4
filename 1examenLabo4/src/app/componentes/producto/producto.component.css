@@ -1,23 +1,25 @@
 /* Estilos para el formulario de producto */
 form {
-  max-width: 500px;
+  max-width: 600px;
   margin: 0 auto;
   padding: 20px;
   border: 1px solid #ccc;
-  border-radius: 5px;
-  background-color: #f9f9f9;
+  border-radius: 10px;
+  background-color: #ffffff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 /* Estilos para los campos de entrada */
 .form-label {
   font-weight: bold;
+  margin-bottom: 5px;
 }
 
 .form-control {
   width: 100%;
-  padding: 8px;
+  padding: 10px;
   margin-bottom: 10px;
-  border: 1px solid #ccc;
+  border: 1px solid #ddd;
   border-radius: 5px;
 }
 
@@ -34,6 +36,7 @@ form {
   border-radius: 5px;
   padding: 10px 20px;
   cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
 .btn-primary:hover {
@@ -48,4 +51,6 @@ form {
 /* Estilos para el componente de selección de país */
 .app-seleccionpais {
   margin-bottom: 20px;
+  max-height: 300px;
+  overflow-y: auto;
 }

@@ -1,12 +1,18 @@
-<div class="container">
-    <div class="row">
-      <div class="col-12">
-        <h2>Listado de Productos</h2>
-        <ul class="list-group">
-          <li *ngFor="let producto of productos" class="list-group-item" (click)="seleccionarProducto(producto)">
-            {{ producto.descripcion }} - {{ producto.codigo }}
-          </li>
-        </ul>
-      </div>
+<div class="container my-5">
+  <div class="row">
+    <div class="col-12">
+      <h2 class="mb-4">Listado de Productos</h2>
+      <ul class="list-group">
+        <li *ngFor="let producto of productos" class="list-group-item list-group-item-action" (click)="seleccionarProducto(producto)">
+          <div class="d-flex justify-content-between align-items-center">
+            <div>
+              <h5 class="mb-1">{{ producto.descripcion }}</h5>
+              <small class="text-muted">{{ producto.codigo }}</small>
+            </div>
+            <span class="badge bg-primary rounded-pill">{{ producto.stock }}</span>
+          </div>
+        </li>
+      </ul>
     </div>
   </div>
+</div>

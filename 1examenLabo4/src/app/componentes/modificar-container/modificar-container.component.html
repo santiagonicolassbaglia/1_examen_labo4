@@ -1,0 +1,40 @@
+<div *ngIf="!selectedContainer" class="container mt-4">
+  <h2 class="text-center mb-4">Selecciona un contenedor para modificar</h2>
+  <ul class="list-group">
+    <li *ngFor="let container of containers" class="list-group-item d-flex justify-content-between align-items-center">
+      <span>{{ container.codigo }} - {{ container.empresa }}</span>
+      <button class="btn btn-primary btn-sm" (click)="onContainerSelect(container)">Seleccionar</button>
+    </li>
+  </ul>
+</div>
+<br>
+<div *ngIf="selectedContainer" class="container mt-4">
+  <h2 class="text-center mb-4">Modificar Contenedor</h2>
+  <form [formGroup]="containerForm" (ngSubmit)="onSubmit()">
+    <div class="mb-3">
+      <label for="color" class="form-label">Color:</label>
+      <input id="color" formControlName="color" type="text" class="form-control" required>
+      <div *ngIf="containerForm.get('color')?.invalid && containerForm.get('color')?.touched" class="text-danger">
+        Color es requerido.
+      </div>
+    </div>
+<br>
+    <div class="mb-3">
+      <label for="empresa" class="form-label">Empresa:</label>
+      <input id="empresa" formControlName="empresa" type="text" class="form-control" required>
+      <div *ngIf="containerForm.get('empresa')?.invalid && containerForm.get('empresa')?.touched" class="text-danger">
+        Empresa es requerida.
+      </div>
+    </div>
+    <br>
+    <div class="mb-3">
+      <label for="capacidad" class="form-label">Capacidad:</label>
+      <input id="capacidad" formControlName="capacidad" type="number" class="form-control" required>
+      <div *ngIf="containerForm.get('capacidad')?.invalid && containerForm.get('capacidad')?.touched" class="text-danger">
+        Capacidad es requerida y debe ser un valor positivo.
+      </div>
+    </div>
+    <br>
+    <button type="submit" class="btn btn-primary btn-lg btn-block" [disabled]="containerForm.invalid">Modificar Container</button>
+  </form>
+</div>

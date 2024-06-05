@@ -15,6 +15,11 @@ export const routes: Routes = [
 { path: 'detalleProducto', loadComponent: () => import('./componentes/detalle-producto/detalle-producto.component').then(m => m.DetalleProductoComponent)},
 { path: 'detallePais', loadComponent: () => import('./componentes/detalle-pais/detalle-pais.component').then(m => m.DetallePaisComponent)},
 { path: 'producpais', loadComponent: () => import('./componentes/productpais/productpais.component').then(m => m.ProductpaisComponent)},
+{ path: 'listarConteiners', loadComponent: () => import('./componentes/listar-containers/listar-containers.component').then(m => m.ListarContainersComponent)},
+{ path: 'modificarContainer', loadComponent: () => import('./componentes/modificar-container/modificar-container.component').then(m => m.ModificarContainerComponent)},
+{ path: 'crearContainer', loadComponent: () => import('./componentes/crear-container/crear-container.component').then(m => m.CrearContainerComponent)},
+{ path: 'homeContenedores', loadComponent: () => import('./componentes/home-contenedores/home-contenedores.component').then(m => m.HomeContenedoresComponent)},
+{ path: 'eliminarContainer', loadComponent: () => import('./componentes/eliminarcontenedor/eliminarcontenedor.component').then(m => m.EliminarcontenedorComponent)},
 {path: 'listadoProductos', loadComponent: () => import('./componentes/listado-producto/listado-producto.component').then(m => m.ListadoProductoComponent), canActivate: [logueadoGuard]},
  
     { path: '', redirectTo: 'login', pathMatch: 'full' },

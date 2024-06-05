@@ -1,0 +1,38 @@
+<!-- src/app/components/crear-container/crear-container.component.html -->
+<form class="container-form" [formGroup]="containerForm" (ngSubmit)="onSubmit()">
+    <h2>Crear Container</h2>
+    <div class="mb-3">
+      <label for="codigo" class="form-label">Código:</label>
+      <input id="codigo" formControlName="codigo" type="text" class="form-control" required>
+      <div *ngIf="containerForm.get('codigo')?.invalid && containerForm.get('codigo')?.touched" class="text-danger">
+        Código es requerido.
+      </div>
+    </div>
+  
+    <div class="mb-3">
+      <label for="color" class="form-label">Color:</label>
+      <input id="color" formControlName="color" type="text" class="form-control" required>
+      <div *ngIf="containerForm.get('color')?.invalid && containerForm.get('color')?.touched" class="text-danger">
+        Color es requerido.
+      </div>
+    </div>
+  
+    <div class="mb-3">
+      <label for="empresa" class="form-label">Empresa:</label>
+      <input id="empresa" formControlName="empresa" type="text" class="form-control" required>
+      <div *ngIf="containerForm.get('empresa')?.invalid && containerForm.get('empresa')?.touched" class="text-danger">
+        Empresa es requerida.
+      </div>
+    </div>
+  
+    <div class="mb-3">
+      <label for="capacidad" class="form-label">Capacidad:</label>
+      <input id="capacidad" formControlName="capacidad" type="number" class="form-control" required>
+      <div *ngIf="containerForm.get('capacidad')?.invalid && containerForm.get('capacidad')?.touched" class="text-danger">
+        Capacidad es requerida y debe ser un valor positivo.
+      </div>
+    </div>
+  
+    <button type="submit" class="btn btn-primary" [disabled]="containerForm.invalid">Crear Container</button>
+  </form>
+  

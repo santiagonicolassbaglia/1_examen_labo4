@@ -1,0 +1,35 @@
+.container {
+  margin-top: 20px;
+}
+
+.list-group-item {
+  cursor: pointer;
+  transition: background-color 0.3s ease; /* Transición suave al cambiar el color de fondo */
+}
+
+.list-group-item:hover {
+  background-color: #f8f9fa; /* Cambio de color de fondo al pasar el mouse */
+}
+
+.list-group-item.active {
+  background-color: #dee2e6; /* Color de fondo cuando está seleccionado */
+}
+
+.text-center {
+  margin-top: 20px;
+}
+
+.btn-danger {
+  margin-top: 10px;
+  background-color: #dc3545; /* Color de fondo del botón de eliminar */
+  border-color: #dc3545; /* Color del borde del botón de eliminar */
+}
+
+.btn-danger:hover {
+  background-color: #c82333; /* Cambio de color de fondo al pasar el mouse */
+  border-color: #c82333; /* Cambio de color del borde al pasar el mouse */
+}
+
+.btn-danger:focus {
+  box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.5); /* Sombra al enfocar el botón */
+}

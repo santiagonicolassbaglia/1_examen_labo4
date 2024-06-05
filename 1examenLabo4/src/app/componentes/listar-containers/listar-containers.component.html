@@ -1,0 +1,9 @@
+
+<div class="container">
+  <h2>Listado de Contenedores</h2>
+  <ul class="list-group">
+    <li *ngFor="let container of containers" class="list-group-item" (click)="selectContainer(container)">
+  {{ container.descripcion }} - {{container.empresa}} - {{ container.codigo }} - {{container.capacidad}} - {{container.color}}
+    </li>
+  </ul>
+</div>

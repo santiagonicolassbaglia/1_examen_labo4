@@ -1,9 +1,12 @@
+<div>
+  <button routerLink="/home" class="btn btn-primary">Volver</button>
+</div>
 <div class="container my-5">
   <div class="row">
     <div class="col-12">
       <h2 class="mb-4">Listado de Productos</h2>
-      <ul class="list-group">
-        <li *ngFor="let producto of productos" class="list-group-item list-group-item-action" (click)="seleccionarProducto(producto)">
+      <ul class="list-group" #productList>
+        <li *ngFor="let producto of productos" class="list-group-item list-group-item-action" (click)="seleccionarProducto(producto); ">
           <div class="d-flex justify-content-between align-items-center">
             <div>
               <h5 class="mb-1">{{ producto.descripcion }}</h5>
@@ -11,8 +14,13 @@
             </div>
             <span class="badge bg-primary rounded-pill">{{ producto.stock }}</span>
           </div>
+          <span class="flecha-abajo">&#8595;</span>
         </li>
       </ul>
+
+      <div *ngIf="productos.length === 0" class="text-center mt-4">
+        <p>No hay productos disponibles.</p>
+      </div>
     </div>
   </div>
 </div>

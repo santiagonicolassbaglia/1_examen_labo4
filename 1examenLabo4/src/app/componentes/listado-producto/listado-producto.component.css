@@ -77,4 +77,10 @@
   .mb-1 {
     margin-bottom: 0.25rem !important;
   }
-  
+  .flecha-abajo {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 24px;
+  }

@@ -7,11 +7,13 @@ import { CrearContainerComponent } from '../crear-container/crear-container.comp
 import { ModificarContainerComponent } from '../modificar-container/modificar-container.component';
 import { ListarContainersComponent } from '../listar-containers/listar-containers.component';
 import { EliminarcontenedorComponent } from '../eliminarcontenedor/eliminarcontenedor.component';
+import { HomeComponent } from '../home/home.component';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-home-contenedores',
   standalone: true,
-  imports: [NgIf, ReactiveFormsModule, NgFor,CrearContainerComponent,ModificarContainerComponent,ListarContainersComponent,EliminarcontenedorComponent],
+  imports: [NgIf, ReactiveFormsModule, NgFor,CrearContainerComponent,ModificarContainerComponent,ListarContainersComponent,EliminarcontenedorComponent,HomeComponent,RouterLink],
   templateUrl: './home-contenedores.component.html',
   styleUrls: ['./home-contenedores.component.css'],
 

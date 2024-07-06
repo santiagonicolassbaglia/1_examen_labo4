@@ -18,49 +18,31 @@ import { RouterLink } from '@angular/router';
   styleUrls: ['./home-contenedores.component.css'],
 
 })
-export class HomeContenedoresComponent implements OnInit {
-  containers: Container[] = [];
-  selectedAction: string = '';
-  selectedContainer: Container | null = null;
+export class HomeContenedoresComponent  {
+  selectedContainerForEdit: Container | null = null;
+  selectedContainerForDelete: Container | null = null;
 
-  constructor(private containerService: ContainerService) {}
-
-  ngOnInit(): void {
-    this.loadContainers();
+  onContainerCreated(container: Container) {
+    // Manejar el contenedor recién creado si es necesario
   }
 
-  loadContainers(): void {
-    this.containerService.getContainers().subscribe(containers => {
-      this.containers = containers;
-    });
-  }
-
-  selectAction(action: string): void {
-    this.selectedAction = action;
-    if (action === 'modificar' || action === 'eliminar') {
-      this.selectedContainer = null;
+  onContainerSelected(event: { container: Container, action: string }) {
+    if (event.action === 'edit') {
+      this.selectedContainerForEdit = event.container;
+      this.selectedContainerForDelete = null;
+    } else if (event.action === 'delete') {
+      this.selectedContainerForDelete = event.container;
+      this.selectedContainerForEdit = null;
     }
   }
 
-  selectContainer(container: Container): void {
-    this.selectedContainer = container;
+  onContainerUpdated(container: Container) {
+    this.selectedContainerForEdit = null;
+    // Actualizar la lista de contenedores si es necesario
   }
 
-  onContainerCreated(container: Container): void {
-    this.containers.push(container);
-    this.selectAction('listar');
-  }
-
-  onContainerModified(modifiedContainer: Container): void {
-    const index = this.containers.findIndex(c => c.codigo === modifiedContainer.codigo);
-    if (index !== -1) {
-      this.containers[index] = modifiedContainer;
-    }
-    this.selectAction('listar');
-  }
-
-  onContainerDeleted(deletedContainer: Container): void {
-    this.containers = this.containers.filter(c => c.codigo !== deletedContainer.codigo);
-    this.selectAction('listar');
+  onContainerDeleted(codigo: string) {
+    this.selectedContainerForDelete = null;
+    // Actualizar la lista de contenedores si es necesario
   }
 }

@@ -24,17 +24,28 @@ export class ContainerService {
 
   createContainer(container: Container): Promise<void> {
     const id = this.firestore.createId();
-    return this.firestore.collection(this.containersPath).doc(id).set(container);
+    const containerData = { 
+      codigo: container.codigo,
+      color: container.color,
+      empresa: container.empresa,
+      capacidad: container.capacidad,
+      descripcion: container.descripcion
+    };
+    return this.firestore.collection(this.containersPath).doc(id).set(containerData);
   }
 
   updateContainer(container: Container): Promise<void> {
-    return this.firestore.collection(this.containersPath).doc(container.codigo).update(container);
+    const containerData = { 
+      codigo: container.codigo,
+      color: container.color,
+      empresa: container.empresa,
+      capacidad: container.capacidad,
+      descripcion: container.descripcion
+    };
+    return this.firestore.collection(this.containersPath).doc(container.codigo).update(containerData);
   }
 
   deleteContainer(codigo: string): Promise<void> {
     return this.firestore.collection(this.containersPath).doc(codigo).delete();
   }
 }
- 
- 
- 

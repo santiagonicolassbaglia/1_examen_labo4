@@ -13,31 +13,14 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 })
 export class EliminarcontenedorComponent {
 
-  @Input() containers: Container[] = [];
-  @Output() containerDeleted = new EventEmitter<Container>();
-  @Output() containerSelected = new EventEmitter<Container>();
-  selectedContainer: Container | null = null;
+  @Input() codigo!: string;
+  @Output() containerDeleted = new EventEmitter<string>();
 
   constructor(private containerService: ContainerService) {}
 
-  ngOnChanges(changes: SimpleChange): void {
-    if (changes['containers'] && changes['containers'].currentValue) {
-      // If containers list changes, reset selected container
-      this.selectedContainer = null;
-    }
-  }
-
-  onContainerSelect(container: Container): void {
-    this.selectedContainer = container;
-    this.containerSelected.emit(container);
-  }
-
   deleteContainer(): void {
-    if (this.selectedContainer) {
-      this.containerService.deleteContainer(this.selectedContainer.codigo).then(() => {
-        this.containerDeleted.emit(this.selectedContainer);
-        this.selectedContainer = null; // Clear selected container after deletion
-      });
-    }
+    this.containerService.deleteContainer(this.codigo).then(() => {
+      this.containerDeleted.emit(this.codigo);
+    });
   }
 }

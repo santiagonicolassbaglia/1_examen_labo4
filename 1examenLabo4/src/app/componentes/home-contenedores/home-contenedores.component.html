@@ -1,32 +1,7 @@
-<div class="container mt-4">
-  <div>
-    <button routerLink="/home" class="btn btn-primary">Volver</button>
-  </div>
-  <h1 class="text-center my-4">Gestión de Contenedores</h1>
-  <div class="button-group text-center my-4">
-    <button class="btn btn-primary mx-2" (click)="selectAction('listar')">Listar Contenedores</button>
-    <button class="btn btn-success mx-2" (click)="selectAction('crear')">Crear Contenedor</button>
-    <button class="btn btn-warning mx-2" (click)="selectAction('modificar')">Modificar Contenedor</button>
-    <button class="btn btn-danger mx-2" (click)="selectAction('eliminar')">Eliminar Contenedor</button>
-  </div>
-
-  <div *ngIf="selectedAction === 'listar'">
-    <app-listar-containers (containerSelected)="selectContainer($event)"></app-listar-containers>
-  </div>
-
-  <div *ngIf="selectedAction === 'crear'">
-    <app-crear-container (containerCreated)="onContainerCreated($event)"></app-crear-container>
-  </div>
-
-  <div *ngIf="selectedAction === 'modificar'">
-    <app-modificar-container [containers]="containers" (containerSelected)="selectContainer($event)" (containerUpdated)="onContainerModified($event)"></app-modificar-container>
-  </div>
-
-  <div *ngIf="selectedAction === 'eliminar'">
-    <app-eliminarcontenedor [containers]="containers" (containerDeleted)="onContainerDeleted($event)" (containerSelected)="selectContainer($event)"></app-eliminarcontenedor>
-  </div>
-
-  <div *ngIf="selectedAction === 'eliminar' && containers.length === 0">
-    <p class="text-center">No hay contenedores disponibles para eliminar.</p>
-  </div>
+<div>
+  <h1>Gestión de Contenedores</h1>
+  <app-crear-container (containerCreated)="onContainerCreated($event)"></app-crear-container>
+  <app-listar-containers (containerSelected)="onContainerSelected($event)"></app-listar-containers>
+  <app-modificar-container *ngIf="selectedContainerForEdit" [container]="selectedContainerForEdit" (containerUpdated)="onContainerUpdated($event)"></app-modificar-container>
+  <app-eliminarcontenedor *ngIf="selectedContainerForDelete" [codigo]="selectedContainerForDelete.codigo" (containerDeleted)="onContainerDeleted($event)"></app-eliminarcontenedor>
 </div>

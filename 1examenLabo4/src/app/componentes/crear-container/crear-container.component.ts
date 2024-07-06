@@ -11,27 +11,21 @@ import { NgIf } from '@angular/common';
   templateUrl: './crear-container.component.html',
   styleUrl: './crear-container.component.css'
 })
-export class CrearContainerComponent implements OnInit {
-  containerForm: FormGroup;
+export class CrearContainerComponent   {
+  codigo: string = '';
+  color: string = '';
+  empresa: string = '';
+  capacidad: number = 0;
+  descripcion: string = '';
+
   @Output() containerCreated = new EventEmitter<Container>();
 
-  constructor(private fb: FormBuilder, private containerService: ContainerService) {
-    this.containerForm = this.fb.group({
-      codigo: ['', [Validators.required]],
-      color: ['', [Validators.required]],
-      empresa: ['', [Validators.required]],
-      capacidad: ['', [Validators.required, Validators.min(0)]]
-    });
-  }
+  constructor(private containerService: ContainerService) {}
 
-  onSubmit(): void {
-    const newContainer: Container = this.containerForm.value;
+  createContainer(): void {
+    const newContainer = new Container('', this.codigo, this.color, this.empresa, this.capacidad, this.descripcion);
     this.containerService.createContainer(newContainer).then(() => {
       this.containerCreated.emit(newContainer);
     });
   }
-
-  ngOnInit(): void {
-  }
-  
 }

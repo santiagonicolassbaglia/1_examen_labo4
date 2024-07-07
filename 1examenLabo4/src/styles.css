@@ -51,4 +51,9 @@
 		animation-timing-function: ease-out;
 		transform: translateY(0);
 	}
+	 
 }
+.fondoDepantalla {
+	background-image: url("../src/assets/environments/imagenes/container4.jpg");
+   
+  }

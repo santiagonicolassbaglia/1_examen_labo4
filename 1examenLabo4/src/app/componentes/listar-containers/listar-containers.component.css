@@ -1,4 +1,8 @@
 /* listar-containers.component.css */
+.fondoDepantalla {
+  background-image: url("../../../assets/environments/imagenes/container1.jpg");
+ 
+}
 .container-list {
   max-width: 800px;
   margin: 0 auto;

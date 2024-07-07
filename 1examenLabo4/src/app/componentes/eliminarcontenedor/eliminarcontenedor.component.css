@@ -1,3 +1,7 @@
+.fondoDepantalla {
+  background-image: url("../../../assets/environments/imagenes/container1.jpg");
+ 
+}
 .container {
   margin-top: 20px;
 }

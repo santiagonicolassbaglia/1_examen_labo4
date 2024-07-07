@@ -1,31 +1,76 @@
-.list-group-item {
-    cursor: pointer;
-    transition: background-color 0.3s ease; /* Transición suave al cambiar el color de fondo */
-  }
+/* Estilo general para el contenedor */
+.fondoDepantalla {
+  background-image: url("../../../assets/environments/imagenes/container1.jpg");
+ 
+}
+div {
+  background-color: #fefefe;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 40px;
+  max-width: 500px;
+  margin: 40px auto;
+  font-family: 'Helvetica Neue', sans-serif;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+div:hover {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  transform: translateY(-5px);
+}
+
+/* Estilo para el título */
+h2 {
+  color: #333;
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 26px;
+  font-weight: 400;
+}
+
+/* Estilo para las etiquetas */
+label {
+  display: block;
+  margin-bottom: 20px;
+ border-radius:6px;;
+ 
+}
+
+/* Estilo para los campos de entrada */
+input[type="text"],
+input[type="number"] {
   
-  .list-group-item:hover {
-    background-color: #f8f9fa; /* Cambio de color de fondo al pasar el mouse */
-  }
-  
-  .btn-primary {
-    background-color: #007bff; /* Color de fondo del botón principal */
-    border-color: #007bff; /* Color del borde del botón principal */
-  }
-  
-  .btn-primary:hover {
-    background-color: #0056b3; /* Cambio de color de fondo al pasar el mouse */
-    border-color: #0056b3; /* Cambio de color del borde al pasar el mouse */
-  }
-  
-  .btn-primary:focus {
-    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.5); /* Sombra al enfocar el botón */
-  }
-  
-  .btn-primary.btn-sm {
-    font-size: 0.875rem; /* Tamaño de fuente más pequeño para el botón pequeño */
-  }
-  
-  .btn-primary.btn-lg {
-    padding: 1rem 2rem; /* Aumentar el relleno para el botón grande */
-  }
-  
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  box-sizing: border-box;
+  font-size: 16px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 8px rgba(0, 123, 255, 0.2);
+  outline: none;
+}
+
+/* Estilo para el botón */
+button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 14px;
+  font-size: 16px;
+  cursor: pointer;
+  width: 100%;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+button:active {
+  transform: scale(0.97);
+}

@@ -1,51 +1,59 @@
-/* src/app/components/crear-container/crear-container.component.css */
-.container-form {
-    max-width: 500px;
-    margin: 0 auto;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background-color: #f9f9f9;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
+.fondoDepantalla {
+  background-image: url("../../../assets/environments/imagenes/container1.jpg");
+ 
+}
+form {
+  display: flex;
+  flex-direction: row;  
+  justify-content: space-between;  
+  max-width: 600px;  
+  margin: 42px auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius:49px;
+  background-color: #f9f9f9;
+}
+
+ 
+label {
+  display: flex;
+  flex-direction: column;  
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: -8px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+ 
+button[type="submit"] {
+  background-color: #007bff;
+  color: #fff;
+  margin-left: 2rem;
+  border-radius: 11px;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+button[type="submit"]:hover {
+  background-color: #0056b3;
+}
+label {
+  display: flex;
+  flex-direction: column;  
   
-  h2 {
-    text-align: center;
-    margin-bottom: 20px;
-  }
-  
-  .form-label {
-    font-weight: bold;
-    color: #333;
-  }
-  
-  .form-control {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 10px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-  }
-  
-  .text-danger {
-    color: #dc3545;
-    margin-top: -10px;
-    margin-bottom: 10px;
-    font-size: 0.875em;
-  }
-  
-  .btn-primary {
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    padding: 10px 20px;
-    cursor: pointer;
-    display: block;
-    width: 100%;
-  }
-  
-  .btn-primary:hover {
-    background-color: #0056b3;
-  }
-  
+  font-weight: bold;
+}
+
+.titulo {
+  color: #333;
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 26px;
+  font-weight: 400;
+}

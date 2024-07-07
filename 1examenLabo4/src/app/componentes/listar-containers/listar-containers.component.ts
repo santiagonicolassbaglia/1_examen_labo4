@@ -44,9 +44,13 @@ export class ListarContainersComponent implements OnInit {
       this.editMode = true;
       this.deleteMode = false;
       this.containerSelected.emit({ container: this.selectedContainer, action: 'edit' });
+  
+      // Desplazamiento hacia la sección de la lista de contenedores
+      const containerListSection = document.getElementById('container-list-section');
+      containerListSection.scrollIntoView({ behavior: 'smooth' });
     }
   }
-
+  
   onDelete(codigo: string, event: MouseEvent): void {
     event.stopPropagation();
     if (this.selectedContainer && this.selectedContainer.codigo === codigo && this.deleteMode) {
@@ -55,8 +59,13 @@ export class ListarContainersComponent implements OnInit {
     } else {
       this.deleteMode = true;
       this.editMode = false;
+  
+      // Desplazamiento hacia la sección de la lista de contenedores
+      const containerListSection = document.getElementById('container-list-section');
+      containerListSection.scrollIntoView({ behavior: 'smooth' });
     }
   }
+  
 
   cancelAction(): void {
     this.selectedContainer = null;

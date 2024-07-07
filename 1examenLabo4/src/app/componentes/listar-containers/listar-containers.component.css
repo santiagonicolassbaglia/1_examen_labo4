@@ -1,13 +1,15 @@
+/* listar-containers.component.css */
 .container-list {
-  padding: 20px;
-  max-width: 600px;
+  max-width: 800px;
   margin: 0 auto;
-  background-color: #f9f9f9;
+  padding: 20px;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: #f9f9f9;
 }
 
 .container-list h2 {
+  margin-bottom: 20px;
   text-align: center;
   color: #333;
 }
@@ -16,69 +18,66 @@
   width: 100%;
   padding: 10px;
   margin-bottom: 20px;
-  border: 1px solid #ddd;
   border-radius: 4px;
+  border: 1px solid #ddd;
+  box-sizing: border-box;
 }
 
 .container-list__items {
-  list-style-type: none;
+  list-style: none;
   padding: 0;
+  margin: 0;
 }
 
 .container-list__items li {
-  padding: 10px;
-  border-bottom: 1px solid #ddd;
-  cursor: pointer;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  background-color: #fff;
+  padding: 15px;
+  margin-bottom: 10px;
   border-radius: 4px;
-  transition: background-color 0.3s;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
 .container-list__items li:hover {
-  background-color: #f1f1f1;
+  background-color: #f0f0f0;
 }
 
 .container-details {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
+  margin-bottom: 10px;
 }
 
 .container-details span {
+  display: block;
+  margin-bottom: 5px;
   color: #555;
 }
 
 .container-actions {
   display: flex;
   gap: 10px;
-  margin-top: 10px;
+  justify-content: center;
 }
 
 .container-actions button {
-  padding: 5px 10px;
+  padding: 10px 15px;
   border: none;
   border-radius: 4px;
-  cursor: pointer;
+  color: #fff;
   background-color: #007bff;
-  color: white;
-  transition: background-color 0.3s;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
 .container-actions button:hover {
   background-color: #0056b3;
 }
 
-.container-actions button:nth-child(2) {
-  background-color: #dc3545;
-}
-
-.container-actions button:nth-child(2):hover {
-  background-color: #c82333;
+.container-actions button:disabled {
+  background-color: #ddd;
+  cursor: not-allowed;
 }
 
 .selected {
-  background-color: #e9ecef;
+  border: 2px solid #007bff;
 }

@@ -16,6 +16,9 @@ export class ListarContainersComponent implements OnInit {
   containers: Container[] = [];
   searchText: string = '';
   selectedContainer: Container | null = null;
+  editMode: boolean = false;
+  deleteMode: boolean = false;
+
   @Output() containerSelected = new EventEmitter<{ container: Container, action: string }>();
 
   constructor(private containerService: ContainerService) {}
@@ -27,16 +30,39 @@ export class ListarContainersComponent implements OnInit {
   }
 
   selectContainer(container: Container): void {
-    this.selectedContainer = this.selectedContainer === container ? null : container;
+    if (this.selectedContainer === container && (this.editMode || this.deleteMode)) {
+      this.cancelAction();
+    } else {
+      this.selectedContainer = container;
+      this.editMode = false;
+      this.deleteMode = false;
+    }
   }
 
-  onEdit(container: Container, event: MouseEvent): void {
-    event.stopPropagation();
-    this.containerSelected.emit({ container, action: 'edit' });
+  onEdit(): void {
+    if (this.selectedContainer) {
+      this.editMode = true;
+      this.deleteMode = false;
+      this.containerSelected.emit({ container: this.selectedContainer, action: 'edit' });
+    }
   }
 
   onDelete(codigo: string, event: MouseEvent): void {
     event.stopPropagation();
-    this.containerSelected.emit({ container: { codigo } as Container, action: 'delete' });
+    if (this.selectedContainer && this.selectedContainer.codigo === codigo && this.deleteMode) {
+      this.containerSelected.emit({ container: { codigo } as Container, action: 'delete' });
+      this.cancelAction();
+    } else {
+      this.deleteMode = true;
+      this.editMode = false;
+    }
   }
+
+  cancelAction(): void {
+    this.selectedContainer = null;
+    this.editMode = false;
+    this.deleteMode = false;
+  }
+
+  
 }

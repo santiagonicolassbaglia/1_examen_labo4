@@ -1,11 +1,31 @@
 <div>
   <h2 class="titulo">Crear Contenedor</h2>
-  <form (ngSubmit)="createContainer()">
-    <label>Código: <input [(ngModel)]="codigo" name="codigo" required></label>
-    <label>Color: <input [(ngModel)]="color" name="color" required></label>
-    <label>Empresa: <input [(ngModel)]="empresa" name="empresa" required></label>
-    <label>Capacidad: <input [(ngModel)]="capacidad" name="capacidad" type="number" required></label>
-    <label>Descripción: <input [(ngModel)]="descripcion" name="descripcion" required></label>
-    <button type="submit">Crear</button>
+  <form [formGroup]="containerForm" (ngSubmit)="createContainer()">
+    <label>Código: <input formControlName="codigo">
+      <span *ngIf="containerForm.get('codigo').invalid && containerForm.get('codigo').touched">
+        Código es requerido
+      </span>
+    </label>
+    <label>Color: <input formControlName="color">
+      <span *ngIf="containerForm.get('color').invalid && containerForm.get('color').touched">
+        Color es requerido
+      </span>
+    </label>
+    <label>Empresa: <input formControlName="empresa">
+      <span *ngIf="containerForm.get('empresa').invalid && containerForm.get('empresa').touched">
+        Empresa es requerida
+      </span>
+    </label>
+    <label>Capacidad: <input formControlName="capacidad" type="number">
+      <span *ngIf="containerForm.get('capacidad').invalid && containerForm.get('capacidad').touched">
+        Capacidad es requerida y debe ser mayor o igual a 1
+      </span>
+    </label>
+    <label>Descripción: <input formControlName="descripcion">
+      <span *ngIf="containerForm.get('descripcion').invalid && containerForm.get('descripcion').touched">
+        Descripción es requerida
+      </span>
+    </label>
+    <button type="submit" [disabled]="containerForm.invalid">Crear</button>
   </form>
 </div>

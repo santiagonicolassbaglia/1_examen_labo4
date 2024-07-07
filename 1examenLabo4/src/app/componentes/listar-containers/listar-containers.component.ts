@@ -51,6 +51,7 @@ export class ListarContainersComponent implements OnInit {
     }
   }
   
+  
   onDelete(codigo: string, event: MouseEvent): void {
     event.stopPropagation();
     if (this.selectedContainer && this.selectedContainer.codigo === codigo && this.deleteMode) {

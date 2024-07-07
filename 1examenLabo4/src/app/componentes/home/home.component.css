@@ -8,8 +8,20 @@
     justify-content: center;
     align-items: center;
     text-align: center;
+    background-size: cover;
+    background-position: center;
+  }
+  .container {
+    background-color: rgba(255, 254, 254, 0.446); /* Más opacidad para resaltar el texto */
+    padding: 40px;
+    border-radius: 15px;
   }
   
+  .header {
+    display: flex;
+    justify-content: space-between; /* Alinea el título y el botón de cierre de sesión */
+    align-items: center;
+  }
   .home-content {
     background-color: rgba(0, 0, 0, 0.5);
     padding: 20px;
@@ -38,6 +50,7 @@
     background-color: #007bff;
     color: #fff;
     transition: background-color 0.3s ease;
+    margin-top: 1rem;
   }
   
   .btn:hover {

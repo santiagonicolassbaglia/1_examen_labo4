@@ -12,6 +12,7 @@ import { NgIf } from '@angular/common';
   styleUrl: './crear-container.component.css'
 })
 export class CrearContainerComponent   {
+  containerForm: FormGroup;
   codigo: string = '';
   color: string = '';
   empresa: string = '';
@@ -20,12 +21,23 @@ export class CrearContainerComponent   {
 
   @Output() containerCreated = new EventEmitter<Container>();
 
-  constructor(private containerService: ContainerService) {}
+  constructor(private fb: FormBuilder, private containerService: ContainerService) {
+    this.containerForm = this.fb.group({
+      codigo: ['', Validators.required],
+      color: ['', Validators.required],
+      empresa: ['', Validators.required],
+      capacidad: [0, [Validators.required, Validators.min(1)]],
+      descripcion: ['', Validators.required]
+    });
+  }
 
   createContainer(): void {
-    const newContainer = new Container('', this.codigo, this.color, this.empresa, this.capacidad, this.descripcion);
-    this.containerService.createContainer(newContainer).then(() => {
-      this.containerCreated.emit(newContainer);
-    });
+    if (this.containerForm.valid) {
+      const newContainer = new Container('', this.containerForm.value.codigo, this.containerForm.value.color, this.containerForm.value.empresa, this.containerForm.value.capacidad, this.containerForm.value.descripcion);
+      this.containerService.createContainer(newContainer).then(() => {
+        this.containerCreated.emit(newContainer);
+        this.containerForm.reset();  
+      });
+    }
   }
 }

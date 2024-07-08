@@ -14,18 +14,19 @@ import { AuthService } from '../../services/auth.service';
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
+
 export class HomeComponent implements OnInit {
   user: any;
   username: string = '';
   nombreUsuario: string = '';
 
-  constructor(private apiservis: ApiService,private router: Router, private authService: AuthService) {}
+  constructor(private apiservis: ApiService, private router: Router, private authService: AuthService) {}
 
   ngOnInit(): void {
     this.getUserProfile();
+    this.getNombreUsuario();
   }
 
- 
   getUserProfile(): void {
     this.apiservis.getFixedUser().subscribe(
       (data) => {
@@ -37,6 +38,16 @@ export class HomeComponent implements OnInit {
     );
   }
 
+  getNombreUsuario(): void {
+    this.authService.getCurrentUserName().subscribe(
+      (nombre) => {
+        this.nombreUsuario = nombre || '';
+      },
+      (error) => {
+        console.error('Error fetching user name', error);
+      }
+    );
+  }
 
   cerrarSesion() {
     this.authService.logout()
@@ -47,5 +58,5 @@ export class HomeComponent implements OnInit {
       .catch(error => {
         console.error('Error al cerrar sesión:', error);
       });
-}
+  }
 }

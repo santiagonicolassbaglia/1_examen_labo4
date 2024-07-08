@@ -1,46 +1,78 @@
-.jumbotron {
-    background-color: #f8f9fa;
-    padding: 2rem 1rem;
-    border-radius: 0.3rem;
-    margin-bottom: 2rem;
+/* Contenedor principal */
+div {
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  max-width: 600px;
+  margin: 20px auto;
+  background-color: #f9f9f9;
+}
+
+/* Título */
+h2 {
+  color: #333;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+/* Etiquetas de texto */
+p {
+  color: #555;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+/* Texto en negrita */
+strong {
+  color: #000;
+}
+
+/* Imagen de la bandera */
+img {
+  max-width: 100px;
+  margin: 10px 0;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+/* Contenedor de información del país */
+.info-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+/* Estilos para móvil */
+@media (max-width: 600px) {
+  div {
+    padding: 10px;
+    margin: 10px;
   }
-  
-  .background {
-    background-color: #e9ecef;
-    padding: 2rem 1rem;
-    border-radius: 0.3rem;
-    margin-bottom: 2rem;
+
+  h2 {
+    font-size: 20px;
   }
-  
-  .borders {
-    background-color: #fff;
-    padding: 2rem 1rem;
-    border-radius: 0.3rem;
-    border: 1px solid #dee2e6;
+
+  p {
+    font-size: 14px;
   }
-  
-  h1 {
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
+
+  img {
+    max-width: 80px;
   }
-  
-  ul {
-    list-style: none;
-    padding: 0;
-  }
-  
-  li {
-    display: flex;
-    align-items: center;
-    margin-bottom: 0.5rem;
-    cursor: pointer;
-  }
-  
-  li img {
-    margin-right: 0.5rem;
-  }
-  
-  li:hover {
-    background-color: #f1f1f1;
-  }
-  
+}
+
+
+.botonVolver{
+  background-color: #007bff;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 5px;
+}

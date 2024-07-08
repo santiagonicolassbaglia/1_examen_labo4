@@ -49,9 +49,9 @@ export class ListadoProductoComponent implements OnInit {
     if (this.productList) {
       const productElement = this.productList.nativeElement.querySelector(`li[class*="${producto.codigo}"]`);
       if (productElement) {
-        const isElementOutOfView = !productElement.scrollIntoView({ behavior: 'smooth', block: 'start' }); // Check if scrollIntoView returns false
+        const isElementOutOfView = !productElement.scrollIntoView({ behavior: 'smooth', block: 'start' });  
         if (isElementOutOfView) {
-          // If element is out of view, scroll manually using getBoundingClientRect and scrollTop
+      
           const productRect = productElement.getBoundingClientRect();
           const parentScrollTop = this.productList.nativeElement.scrollTop;
           window.scrollTo({

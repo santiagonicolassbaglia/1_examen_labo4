@@ -142,6 +142,8 @@ getCurrentUserName(): Observable<string | null> {
   );
 }
 
+
+
 async verificarMensajeExistenteAlIniciarSesion(): Promise<void> {
   const user = firebase.auth().currentUser;
   if (!user) {

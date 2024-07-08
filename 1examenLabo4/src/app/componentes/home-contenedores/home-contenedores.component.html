@@ -1,4 +1,7 @@
 <div>
+  <button routerLink="/home" class="btn btn-primary botonVolver">Volver</button>
+</div>
+<div>
   <h1>Gestión de Contenedores</h1>
   <app-crear-container (containerCreated)="onContainerCreated($event)"></app-crear-container>
   <app-listar-containers (containerSelected)="onContainerSelected($event)"></app-listar-containers>

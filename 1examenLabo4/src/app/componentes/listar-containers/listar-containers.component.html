@@ -10,11 +10,13 @@
         <span><strong>Capacidad:</strong> {{ container.capacidad }} unidades</span>
         <span><strong>Descripción:</strong> {{ container.descripcion }}</span>
       </div>
-      <div *ngIf="container === selectedContainer" class="container-actions">
-        <button *ngIf="!editMode && !deleteMode" (click)="onEdit()">Editar</button>
-        <button *ngIf="!editMode && !deleteMode" (click)="onDelete(container.codigo, $event)">Borrar</button>
+      <div class="container-actions">
+      <button (click)="onEdit(container, $event)">Editar</button>
+      <button (click)="onDelete(container.codigo, $event)">Borrar</button>
+
         <button *ngIf="editMode || deleteMode" (click)="cancelAction()">Cancelar</button>
       </div>
     </li>
   </ul>
 </div>
+ 

@@ -39,33 +39,19 @@ export class ListarContainersComponent implements OnInit {
     }
   }
 
-  onEdit(): void {
-    if (this.selectedContainer) {
-      this.editMode = true;
-      this.deleteMode = false;
-      this.containerSelected.emit({ container: this.selectedContainer, action: 'edit' });
-  
-      // Desplazamiento hacia la sección de la lista de contenedores
-      const containerListSection = document.getElementById('container-list-section');
-      containerListSection.scrollIntoView({ behavior: 'smooth' });
-    }
+  onEdit(container: Container, event: MouseEvent): void {
+    event.stopPropagation();
+    this.containerSelected.emit({ container, action: 'edit' });
   }
-  
-  
+
+
+ 
   onDelete(codigo: string, event: MouseEvent): void {
     event.stopPropagation();
-    if (this.selectedContainer && this.selectedContainer.codigo === codigo && this.deleteMode) {
-      this.containerSelected.emit({ container: { codigo } as Container, action: 'delete' });
-      this.cancelAction();
-    } else {
-      this.deleteMode = true;
-      this.editMode = false;
-  
-      // Desplazamiento hacia la sección de la lista de contenedores
-      const containerListSection = document.getElementById('container-list-section');
-      containerListSection.scrollIntoView({ behavior: 'smooth' });
-    }
+    this.containerSelected.emit({ container: { codigo } as Container, action: 'delete' });
   }
+ 
+ 
   
 
   cancelAction(): void {

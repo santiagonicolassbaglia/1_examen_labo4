@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterLink, RouterOutlet } from '@angular/router';
  
@@ -20,14 +20,34 @@ import { CrearContainerComponent } from './componentes/crear-container/crear-con
 import { HomeContenedoresComponent } from './componentes/home-contenedores/home-contenedores.component';
 import { EliminarcontenedorComponent } from './componentes/eliminarcontenedor/eliminarcontenedor.component';
 import { BuscarPipe } from './Pipes/buscar.pipe';
+import { SpinnerComponent } from './componentes/spinner/spinner.component';
+import { Subscription } from 'rxjs';
+import { SpinnerService } from './services/spinner.service';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet,FormsModule,CommonModule,RouterLink,LoginComponent,PaginaErrorComponent,RegistroComponent,HomeComponent,HomeAdminComponent,ProductoComponent,ProductpaisComponent,DetallePaisComponent,DetalleProductoComponent,ListadoProductoComponent, ListarContainersComponent,ReactiveFormsModule,ModificarContainerComponent,CrearContainerComponent,HomeContenedoresComponent,EliminarcontenedorComponent,BuscarPipe],
+  imports: [RouterOutlet,FormsModule,CommonModule,RouterLink,LoginComponent,PaginaErrorComponent,RegistroComponent,HomeComponent,HomeAdminComponent,ProductoComponent,ProductpaisComponent,DetallePaisComponent,DetalleProductoComponent,ListadoProductoComponent, ListarContainersComponent,ReactiveFormsModule,ModificarContainerComponent,CrearContainerComponent,HomeContenedoresComponent,EliminarcontenedorComponent,BuscarPipe, SpinnerComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
-export class AppComponent {
+export class AppComponent implements OnInit, OnDestroy {
   title = 'examenlabo';
+  isLoading: boolean = false;
+  private subscription: Subscription;
+
+  constructor(private loadingService: SpinnerService) {}
+
+  ngOnInit() {
+    this.subscription = this.loadingService.loading$.subscribe(
+      (isLoading: boolean) => {
+        this.isLoading = isLoading;
+      }
+    );
+  }
+  ngOnDestroy() {
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+    }
+  }
 }

@@ -6,6 +6,7 @@ import { Router, RouterLink } from '@angular/router';
 import { LoginComponent } from '../login/login.component';
 import { Usuario } from '../../clases/usuario';
 import { AuthService } from '../../services/auth.service';
+import { SpinnerService } from '../../services/spinner.service';
 
 @Component({
   selector: 'app-home',
@@ -20,7 +21,7 @@ export class HomeComponent implements OnInit {
   username: string = '';
   nombreUsuario: string = '';
 
-  constructor(private apiservis: ApiService, private router: Router, private authService: AuthService) {}
+  constructor(private apiservis: ApiService, private router: Router, private authService: AuthService,private loadingService: SpinnerService) {}
 
   ngOnInit(): void {
     this.getUserProfile();
@@ -49,7 +50,10 @@ export class HomeComponent implements OnInit {
     );
   }
 
-  cerrarSesion() {
+  cerrarSesion() { this.loadingService.show();
+    setTimeout(() => {
+      this.loadingService.hide();
+    }, 2800);
     this.authService.logout()
       .then(() => {
         console.log('Sesión cerrada correctamente');

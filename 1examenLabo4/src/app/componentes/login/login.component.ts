@@ -4,7 +4,7 @@ import { Router, RouterLink } from '@angular/router';
 import { PaginaErrorComponent } from '../pagina-error/pagina-error.component';
 import { NgIf } from '@angular/common';
 import { AuthService } from '../../services/auth.service';
-
+import { SpinnerService } from '../../services/spinner.service';
 @Component({
   selector: 'app-login',
   standalone: true,
@@ -21,7 +21,7 @@ export class LoginComponent implements OnInit {
   protected form: FormGroup;
   @Output() nombreUsuarioEmitido = new EventEmitter<string>();
 
-  constructor(private router: Router, private authService: AuthService) {}
+  constructor(private router: Router, private authService: AuthService, private loadingService: SpinnerService) {}
 
   ngOnInit(): void {
 
@@ -37,12 +37,17 @@ export class LoginComponent implements OnInit {
   }
 
   async login() {
+    this.loadingService.show();
+    setTimeout(() => {
+      this.loadingService.hide();
+    }, 3500);
+     
     try {
       const nombreUsuario = '';  
     this.nombreUsuarioEmitido.emit(nombreUsuario);
       await this.authService.login(this.mail, this.clave);
-    
-       
+     
+     
       this.router.navigateByUrl('home');
     } catch (error) {
       console.log('Error de inicio de sesión:', error);

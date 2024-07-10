@@ -5,6 +5,8 @@ import { NgIf } from '@angular/common';
 import { Router, RouterLink } from '@angular/router';
 import { Usuario } from '../../clases/usuario';
 import { AuthService } from '../../services/auth.service';
+import { SpinnerComponent } from '../spinner/spinner.component';
+import { SpinnerService } from '../../services/spinner.service';
 
 @Component({
   selector: 'app-registro',
@@ -25,30 +27,22 @@ export class RegistroComponent implements OnInit {
   private fb=inject(FormBuilder);
   protected form: FormGroup;
   
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(private authService: AuthService, private router: Router,private loadingService:  SpinnerService) {}
 
   ngOnInit(): void {
-
-    // this.form = this.fb.group({
-    // nombre: new FormControl(null,Validators.compose([Validators.required, Validators.minLength(3)])),
-    // mail: new FormControl(null,Validators.compose([Validators.required, Validators.email])),
-    // clave: new FormControl(null,Validators.compose([Validators.required, Validators.minLength(6)]))
-
-    // });
-
+ 
     const required = Validators.required;
 
 this.form = this.fb.group({
- 
- 
+  
 });
-  }
-
- 
-
-
+  } 
   registrar() {
-    // Verificar que los campos no estén vacíos
+    this.loadingService.show();
+    setTimeout(() => {
+      this.loadingService.hide();
+    }, 3500);
+ 
 if (this.hasError()) {
       return;
     }
@@ -56,16 +50,15 @@ if (this.hasError()) {
       this.mensajeError = 'Por favor, completa todos los campos.';
       return;
     }
-
-    // Crear un nuevo objeto de usuario con los datos del formulario
+ 
     const nuevoUsuario = new Usuario(this.nombre, this.mail, this.clave, '');
 
-    // Llamar al método de registro del servicio AuthService
+    
     this.authService.registrar(nuevoUsuario).then(() => {
-      // Redirigir al usuario al componente de inicio de sesión después del registro exitoso
+ 
       this.router.navigateByUrl('/login');
     }).catch((error) => {
-      // Manejar errores de registro
+      
       this.mensajeError = 'Hubo un problema al registrar el usuario. Inténtalo de nuevo.';
       console.error('Error al registrar usuario:', error);
     });

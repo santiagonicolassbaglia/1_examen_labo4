@@ -4,6 +4,7 @@ import { Container } from '../../clases/container';
 import { NgFor, NgIf } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { BuscarPipe } from '../../Pipes/buscar.pipe';
+import { SpinnerService } from '../../services/spinner.service';
  
 @Component({
   selector: 'app-listar-containers',
@@ -21,7 +22,7 @@ export class ListarContainersComponent implements OnInit {
 
   @Output() containerSelected = new EventEmitter<{ container: Container, action: string }>();
 
-  constructor(private containerService: ContainerService) {}
+  constructor(private containerService: ContainerService,private loadingService: SpinnerService ) {}
 
   ngOnInit(): void {
     this.containerService.getContainers().subscribe(data => {
@@ -30,6 +31,9 @@ export class ListarContainersComponent implements OnInit {
   }
 
   selectContainer(container: Container): void {
+    setTimeout(() => {
+      this.loadingService.hide();
+    }, 1000);
     if (this.selectedContainer === container && (this.editMode || this.deleteMode)) {
       this.cancelAction();
     } else {
@@ -37,6 +41,7 @@ export class ListarContainersComponent implements OnInit {
       this.editMode = false;
       this.deleteMode = false;
     }
+
   }
 
   onEdit(container: Container, event: MouseEvent): void {

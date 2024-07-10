@@ -1,5 +1,5 @@
 import { Component, OnInit, inject } from '@angular/core';
-import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, RequiredValidator, Validators } from '@angular/forms';
 import { PaginaErrorComponent } from '../pagina-error/pagina-error.component';
 import { NgIf } from '@angular/common';
 import { Router, RouterLink } from '@angular/router';
@@ -17,48 +17,41 @@ import { SpinnerService } from '../../services/spinner.service';
 })
 export class RegistroComponent implements OnInit {
 
-  nombre: string = '';
-  mail: string = '';
-  clave: string = '';
   mensajeError: string = '';
-  
-  //para validaciones
 
-  private fb=inject(FormBuilder);
+  private fb = inject(FormBuilder);
   protected form: FormGroup;
-  
-  constructor(private authService: AuthService, private router: Router,private loadingService:  SpinnerService) {}
+
+  constructor(private authService: AuthService, private router: Router, private loadingService: SpinnerService) {}
 
   ngOnInit(): void {
- 
-    const required = Validators.required;
+    this.form = this.fb.group({
+      nombre: ['', [Validators.required, Validators.minLength(2)]],
+      mail: ['', [Validators.required, Validators.email]],
+      clave: ['', [Validators.required, Validators.minLength(6)]]
+    });
+  }
 
-this.form = this.fb.group({
-  
-});
-  } 
   registrar() {
     this.loadingService.show();
     setTimeout(() => {
       this.loadingService.hide();
     }, 3500);
- 
-if (this.hasError()) {
-      return;
-    }
-    if (!this.nombre || !this.mail || !this.clave) {
-      this.mensajeError = 'Por favor, completa todos los campos.';
-      return;
-    }
- 
-    const nuevoUsuario = new Usuario(this.nombre, this.mail, this.clave, '');
 
-    
+    if (this.hasError()) {
+      return;
+    }
+
+    const nuevoUsuario = new Usuario(
+      this.form.value.nombre,
+      this.form.value.mail,
+      this.form.value.clave,
+      ''
+    );
+
     this.authService.registrar(nuevoUsuario).then(() => {
- 
       this.router.navigateByUrl('/login');
     }).catch((error) => {
-      
       this.mensajeError = 'Hubo un problema al registrar el usuario. Inténtalo de nuevo.';
       console.error('Error al registrar usuario:', error);
     });
@@ -67,7 +60,5 @@ if (this.hasError()) {
   private hasError(): boolean {
     this.form.markAllAsTouched();
     return this.form.invalid;
-     }
-
-
+  }
 }

@@ -22,7 +22,7 @@ export class ListarContainersComponent implements OnInit {
 
   @Output() containerSelected = new EventEmitter<{ container: Container, action: string }>();
 
-  constructor(private containerService: ContainerService,private loadingService: SpinnerService ) {}
+  constructor(private containerService: ContainerService, private loadingService: SpinnerService) {}
 
   ngOnInit(): void {
     this.containerService.getContainers().subscribe(data => {
@@ -41,7 +41,6 @@ export class ListarContainersComponent implements OnInit {
       this.editMode = false;
       this.deleteMode = false;
     }
-
   }
 
   onEdit(container: Container, event: MouseEvent): void {
@@ -49,21 +48,14 @@ export class ListarContainersComponent implements OnInit {
     this.containerSelected.emit({ container, action: 'edit' });
   }
 
-
- 
-  onDelete(codigo: string, event: MouseEvent): void {
+  onDelete(container: Container, event: MouseEvent): void {
     event.stopPropagation();
-    this.containerSelected.emit({ container: { codigo } as Container, action: 'delete' });
+    this.containerSelected.emit({ container, action: 'delete' });
   }
- 
- 
-  
 
   cancelAction(): void {
     this.selectedContainer = null;
     this.editMode = false;
     this.deleteMode = false;
   }
-
-  
 }

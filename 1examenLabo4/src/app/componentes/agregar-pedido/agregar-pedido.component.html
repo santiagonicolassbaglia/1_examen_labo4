@@ -1,0 +1,17 @@
+<div>
+    <h2>Agregar Pedido</h2>
+    <form [formGroup]="pedidoForm" (ngSubmit)="agregarPedido()">
+      <div class="form-group">
+        <label for="productoCodigo">Código del Producto</label>
+        <input type="text" id="productoCodigo" formControlName="productoCodigo" class="form-control">
+        <div *ngIf="!productoValido" class="text-danger">Producto no válido.</div>
+      </div>
+      <div class="form-group">
+        <label for="cantidad">Cantidad</label>
+        <input type="number" id="cantidad" formControlName="cantidad" class="form-control">
+        <div *ngIf="!stockSuficiente" class="text-danger">Stock insuficiente.</div>
+      </div>
+      <button type="submit" class="btn btn-primary" [disabled]="pedidoForm.invalid">Agregar</button>
+    </form>
+  </div>
+  

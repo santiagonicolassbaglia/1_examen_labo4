@@ -1,0 +1,14 @@
+<div>
+    <h2>Detalle del Pedido</h2>
+    <div class="card">
+      <p><strong>Código del Contenedor:</strong> {{ container.codigo }}</p>
+      <p><strong>Capacidad Disponible:</strong> {{ container.capacidad }}</p>
+      <h3>Pedidos Asociados</h3>
+      <ul>
+        <li *ngFor="let pedido of pedidos">
+          Código: {{ pedido.productoId }}, Cantidad: {{ pedido.cantidad }}, Fecha: {{ pedido.fecha | date }}
+        </li>
+      </ul>
+    </div>
+  </div>
+  

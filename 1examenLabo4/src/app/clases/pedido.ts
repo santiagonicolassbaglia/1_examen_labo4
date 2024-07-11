@@ -3,7 +3,8 @@ export class Pedido {
       public productoId: string,
       public descripcion: string,
       public cantidad: number,
-      public fecha: Date
+      public fecha: Date,
+      public codigoContainer: string,
     ) {}
   
     toPlainObject() {
@@ -11,7 +12,8 @@ export class Pedido {
         productoId: this.productoId,
         descripcion: this.descripcion,
         cantidad: this.cantidad,
-        fecha: this.fecha
+        fecha: this.fecha,
+        codigoContainer: this.codigoContainer,
       };
     }
   }

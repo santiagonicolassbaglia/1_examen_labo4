@@ -12,24 +12,25 @@ export class ProductoService {
 
   constructor(private firestore: AngularFirestore) {}
 
- 
-
-  obtenerProductos() {
-    return this.firestore.collection(this.productosPath).snapshotChanges();
+  obtenerProductos(): Observable<Producto[]> {
+    return this.firestore.collection<Producto>(this.productosPath).valueChanges();
   }
 
   getProductosConStock(): Observable<Producto[]> {
-    return this.firestore.collection('Productos', ref => ref.where('stock', '>', 0))
-      .snapshotChanges().pipe(
-        map(actions => actions.map(a => {
-          const data = a.payload.doc.data() as Producto;
-          return data;
-        }))
-      );
+    return this.firestore.collection<Producto>(this.productosPath, ref => ref.where('stock', '>', 0))
+      .valueChanges();
   }
 
   crearProducto(producto: Producto): Promise<void> {
     const id = this.firestore.createId();
     return this.firestore.collection('Productos').doc(id).set(Object.assign({}, producto));
+  }
+
+  obtenerProductoPorCodigo(codigo: string): Observable<Producto | undefined> {
+    return this.firestore.collection<Producto>(this.productosPath, ref => ref.where('codigo', '==', codigo))
+      .valueChanges()
+      .pipe(
+        map(productos => productos.length > 0 ? productos[0] : undefined)
+      );
   }
 }

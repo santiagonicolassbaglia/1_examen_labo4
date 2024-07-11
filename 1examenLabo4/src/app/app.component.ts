@@ -25,11 +25,13 @@ import { Subscription } from 'rxjs';
 import { SpinnerService } from './services/spinner.service';
 import { Pedido } from './clases/pedido';
 import { PedidosComponent } from './componentes/pedidos/pedidos.component';
+import { AgregarPedidoComponent } from './componentes/agregar-pedido/agregar-pedido.component';
+import { DetallePedidoComponent } from './componentes/detalle-pedido/detalle-pedido.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet,FormsModule,CommonModule,RouterLink,LoginComponent,PaginaErrorComponent,RegistroComponent,HomeComponent,HomeAdminComponent,ProductoComponent,ProductpaisComponent,DetallePaisComponent,DetalleProductoComponent,ListadoProductoComponent, ListarContainersComponent,ReactiveFormsModule,ModificarContainerComponent,CrearContainerComponent,HomeContenedoresComponent,EliminarcontenedorComponent,BuscarPipe, SpinnerComponent,PedidosComponent],
+  imports: [RouterOutlet,FormsModule,CommonModule,RouterLink,LoginComponent,PaginaErrorComponent,RegistroComponent,HomeComponent,HomeAdminComponent,ProductoComponent,ProductpaisComponent,DetallePaisComponent,DetalleProductoComponent,ListadoProductoComponent, ListarContainersComponent,ReactiveFormsModule,ModificarContainerComponent,CrearContainerComponent,HomeContenedoresComponent,EliminarcontenedorComponent,BuscarPipe, SpinnerComponent,PedidosComponent,AgregarPedidoComponent,DetallePedidoComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

@@ -23,7 +23,7 @@ export class HomeContenedoresComponent  {
   selectedContainerForDelete: Container | null = null;
 
   onContainerCreated(container: Container) {
-    // Manejar el contenedor recién creado si es necesario
+   
   }
 
   onContainerSelected(event: { container: Container, action: string }) {
@@ -38,11 +38,11 @@ export class HomeContenedoresComponent  {
 
   onContainerUpdated(container: Container) {
     this.selectedContainerForEdit = null;
-    // Actualizar la lista de contenedores si es necesario
+    
   }
 
   onContainerDeleted(codigo: string) {
     this.selectedContainerForDelete = null;
-    // Actualizar la lista de contenedores si es necesario
+ 
   }
 }

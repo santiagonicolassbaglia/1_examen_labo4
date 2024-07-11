@@ -23,6 +23,8 @@ export const routes: Routes = [
 {path: 'pedidos', loadComponent: () => import('./componentes/pedidos/pedidos.component').then(m => m.PedidosComponent) },
 {path: 'listadoProductos', loadComponent: () => import('./componentes/listado-producto/listado-producto.component').then(m => m.ListadoProductoComponent), canActivate: [logueadoGuard]},
  {path:'spinner', loadComponent: () => import('./componentes/spinner/spinner.component').then(m => m.SpinnerComponent)},
-    { path: '', redirectTo: 'login', pathMatch: 'full' },
+ {path: 'agregarPedido', loadComponent: () => import('./componentes/agregar-pedido/agregar-pedido.component').then(m => m.AgregarPedidoComponent)},
+ {path: 'detallePedido', loadComponent: () => import('./componentes/detalle-pedido/detalle-pedido.component').then(m => m.DetallePedidoComponent)},  
+ { path: '', redirectTo: 'login', pathMatch: 'full' },
     { path: '**', redirectTo: 'paginaError' }
 ];

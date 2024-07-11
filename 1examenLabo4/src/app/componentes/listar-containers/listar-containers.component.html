@@ -1,22 +1,10 @@
-<div class="container-list fondoDepantalla">
-  <h2>Lista de Contenedores</h2>
-  <input type="text" placeholder="Buscar..." [(ngModel)]="searchText" class="search-box">
-  <ul class="container-list__items">
-    <li *ngFor="let container of containers | buscar:searchText" (click)="selectContainer(container)" [class.selected]="container === selectedContainer">
-      <div class="container-details">
-        <span><strong>Código:</strong> {{ container.codigo }}</span>
-        <span><strong>Color:</strong> {{ container.color }}</span>
-        <span><strong>Empresa:</strong> {{ container.empresa }}</span>
-        <span><strong>Capacidad:</strong> {{ container.capacidad }} unidades</span>
-        <span><strong>Descripción:</strong> {{ container.descripcion }}</span>
-      </div>
-      <div class="container-actions">
+<div>
+  <h2>Lista de Containers</h2>
+  <ul>
+    <li *ngFor="let container of containers | buscar:searchText">
+      {{ container.codigo }} - {{ container.empresa }}
       <button (click)="onEdit(container, $event)">Editar</button>
-      <button (click)="onDelete(container.codigo, $event)">Borrar</button>
-
-        <button *ngIf="editMode || deleteMode" (click)="cancelAction()">Cancelar</button>
-      </div>
+      <button (click)="onDelete(container, $event)">Eliminar</button>
     </li>
   </ul>
 </div>
- 

@@ -3,85 +3,84 @@
   background-image: url("../../../assets/environments/imagenes/container1.jpg");
  
 }
+ 
 .container-list {
   max-width: 800px;
   margin: 0 auto;
   padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  background-color: #f9f9f9;
 }
 
-.container-list h2 {
-  margin-bottom: 20px;
+h2 {
   text-align: center;
   color: #333;
-}
-
-.search-box {
-  width: 100%;
-  padding: 10px;
   margin-bottom: 20px;
-  border-radius: 4px;
-  border: 1px solid #ddd;
-  box-sizing: border-box;
+  font-size: 24px;
 }
 
-.container-list__items {
+ul {
   list-style: none;
   padding: 0;
-  margin: 0;
 }
 
-.container-list__items li {
+ul li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   padding: 15px;
   margin-bottom: 10px;
-  border-radius: 4px;
-  background-color: #fff;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  cursor: pointer;
-  transition: background-color 0.3s ease;
+  border-radius: 8px;
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  transition: box-shadow 0.3s ease;
 }
 
-.container-list__items li:hover {
-  background-color: #f0f0f0;
+ul li:hover {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.container-details {
-  margin-bottom: 10px;
+.container-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
 }
 
-.container-details span {
-  display: block;
-  margin-bottom: 5px;
-  color: #555;
+span {
+  flex-grow: 1;
+  color: #333;
+  font-size: 18px;
 }
 
-.container-actions {
+.button-group {
   display: flex;
   gap: 10px;
-  justify-content: center;
 }
 
-.container-actions button {
-  padding: 10px 15px;
+.btn {
+  padding: 8px 16px;
   border: none;
   border-radius: 4px;
-  color: #fff;
-  background-color: #007bff;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  font-size: 14px;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-.container-actions button:hover {
-  background-color: #0056b3;
+.btn-edit {
+  background-color: #4CAF50;
+  color: white;
 }
 
-.container-actions button:disabled {
-  background-color: #ddd;
-  cursor: not-allowed;
+.btn-edit:hover {
+  background-color: #45a049;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
 }
 
-.selected {
-  border: 2px solid #007bff;
+.btn-delete {
+  background-color: #f44336;
+  color: white;
+}
+
+.btn-delete:hover {
+  background-color: #e41d1d;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
 }

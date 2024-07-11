@@ -23,11 +23,13 @@ import { BuscarPipe } from './Pipes/buscar.pipe';
 import { SpinnerComponent } from './componentes/spinner/spinner.component';
 import { Subscription } from 'rxjs';
 import { SpinnerService } from './services/spinner.service';
+import { Pedido } from './clases/pedido';
+import { PedidosComponent } from './componentes/pedidos/pedidos.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet,FormsModule,CommonModule,RouterLink,LoginComponent,PaginaErrorComponent,RegistroComponent,HomeComponent,HomeAdminComponent,ProductoComponent,ProductpaisComponent,DetallePaisComponent,DetalleProductoComponent,ListadoProductoComponent, ListarContainersComponent,ReactiveFormsModule,ModificarContainerComponent,CrearContainerComponent,HomeContenedoresComponent,EliminarcontenedorComponent,BuscarPipe, SpinnerComponent],
+  imports: [RouterOutlet,FormsModule,CommonModule,RouterLink,LoginComponent,PaginaErrorComponent,RegistroComponent,HomeComponent,HomeAdminComponent,ProductoComponent,ProductpaisComponent,DetallePaisComponent,DetalleProductoComponent,ListadoProductoComponent, ListarContainersComponent,ReactiveFormsModule,ModificarContainerComponent,CrearContainerComponent,HomeContenedoresComponent,EliminarcontenedorComponent,BuscarPipe, SpinnerComponent,PedidosComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

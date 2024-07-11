@@ -85,11 +85,17 @@ private async updateLastLogin(uid: string) {
 }
 
 public async guardarUsuarioFirestore(uid: string, nombre: string, email: string) {
-  await this.firestore.collection('Usuarios').doc(uid).set({
-    nombre,
-    email,
-    lastLogin: firebase.firestore.FieldValue.serverTimestamp()
-  });
+  try {
+    await this.firestore.collection('Usuarios').doc(uid).set({
+      nombre,
+      email,
+      lastLogin: firebase.firestore.FieldValue.serverTimestamp()
+    });
+    console.log('Usuario guardado en Firestore con UID:', uid);
+  } catch (error) {
+    console.error('Error al guardar usuario en Firestore:', error);
+    throw error;
+  }
 }
 
 async logout() {

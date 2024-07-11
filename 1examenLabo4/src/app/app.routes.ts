@@ -20,6 +20,7 @@ export const routes: Routes = [
 { path: 'crearContainer', loadComponent: () => import('./componentes/crear-container/crear-container.component').then(m => m.CrearContainerComponent)},
 { path: 'homeContenedores', loadComponent: () => import('./componentes/home-contenedores/home-contenedores.component').then(m => m.HomeContenedoresComponent)},
 { path: 'eliminarContainer', loadComponent: () => import('./componentes/eliminarcontenedor/eliminarcontenedor.component').then(m => m.EliminarcontenedorComponent)},
+{path: 'pedidos', loadComponent: () => import('./componentes/pedidos/pedidos.component').then(m => m.PedidosComponent) },
 {path: 'listadoProductos', loadComponent: () => import('./componentes/listado-producto/listado-producto.component').then(m => m.ListadoProductoComponent), canActivate: [logueadoGuard]},
  {path:'spinner', loadComponent: () => import('./componentes/spinner/spinner.component').then(m => m.SpinnerComponent)},
     { path: '', redirectTo: 'login', pathMatch: 'full' },

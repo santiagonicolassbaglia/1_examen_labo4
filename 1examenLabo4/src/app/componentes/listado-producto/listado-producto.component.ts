@@ -3,16 +3,19 @@ import { Producto } from '../../clases/producto';
 import { ProductoService } from '../../services/producto.service';
 import { NgFor, NgIf } from '@angular/common';
 import { RouterLink } from '@angular/router';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BuscarPipe } from '../../Pipes/buscar.pipe';
+import { BuscarproductosPipe } from '../../Pipes/buscarproductos.pipe';
 
 @Component({
   selector: 'app-listado-producto',
   standalone: true,
-  imports: [NgFor,NgIf,RouterLink],
+  imports: [NgFor,NgIf,RouterLink,FormsModule,ReactiveFormsModule,BuscarproductosPipe],
   templateUrl: './listado-producto.component.html',
   styleUrls: ['./listado-producto.component.css']
 })
 export class ListadoProductoComponent implements OnInit {
-  
+  searchText: string = '';
   productos: Producto[] = [];
   @Output() productoSeleccionado = new EventEmitter<Producto>();
   @ViewChild('productList', { static: true }) productList: ElementRef | null = null;

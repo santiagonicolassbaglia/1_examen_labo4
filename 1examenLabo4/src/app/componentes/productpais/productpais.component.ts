@@ -21,6 +21,7 @@ export class ProductpaisComponent {
   productoSeleccionado: Producto | null = null;
   pais: Pais | null = null;
   paises: Pais[] = [];
+  searchText: string = '';
 
   constructor(
     private productoService: ProductoService,

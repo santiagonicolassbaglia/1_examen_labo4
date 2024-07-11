@@ -1,9 +1,27 @@
-<div>
+<div class="container">
   <button routerLink="/home" class="btn btn-primary">Volver</button>
-</div>
-<div>
   <h1>Gestión de Pedidos</h1>
-  <app-listar-containers (containerSelected)="onContainerSelected($event)"></app-listar-containers>
-  <app-agregar-pedido *ngIf="selectedContainer" [container]="selectedContainer" (pedidoCreado)="onPedidoCreado($event)"></app-agregar-pedido>
-  <app-detalle-pedido *ngIf="selectedContainer" [container]="selectedContainer"></app-detalle-pedido>
+  <div class="card">
+    <app-listar-containers (containerSelected)="onContainerSelected($event)"></app-listar-containers>
+  </div>
+  <div *ngIf="selectedContainer" class="card">
+    <h2>Crear Pedido</h2>
+    <form [formGroup]="pedidoForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="productoId">Producto</label>
+        <select formControlName="productoId" id="productoId" class="form-control">
+          <option value="">Seleccione un producto</option>
+          <option *ngFor="let producto of productos" [value]="producto.codigo">{{ producto.descripcion }}</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="cantidad">Cantidad</label>
+        <input type="number" formControlName="cantidad" id="cantidad" class="form-control">
+      </div>
+      <button type="submit" class="btn btn-primary" [disabled]="pedidoForm.invalid">Crear Pedido</button>
+    </form>
+  </div>
+  <div *ngIf="selectedContainer" class="card">
+    <app-detalle-pedido [container]="selectedContainer"></app-detalle-pedido>
+  </div>
 </div>

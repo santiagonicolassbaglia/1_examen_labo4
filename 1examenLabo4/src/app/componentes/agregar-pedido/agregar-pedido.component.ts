@@ -5,6 +5,7 @@ import { Pedido } from '../../clases/pedido';
 import { Container } from '../../clases/container';
 import { PedidoService } from '../../services/pedido.service';
 import { NgIf } from '@angular/common';
+import { Producto } from '../../clases/producto';
 @Component({
   selector: 'app-agregar-pedido',
   standalone: true,
@@ -16,6 +17,7 @@ export class AgregarPedidoComponent {
   @Input() container!: Container;
   @Output() pedidoCreado = new EventEmitter<Pedido>();
   pedidoForm: FormGroup;
+  productos: Producto[] = [];
   productoValido: boolean = true;
   stockSuficiente: boolean = true;
 
@@ -27,6 +29,12 @@ export class AgregarPedidoComponent {
     this.pedidoForm = this.fb.group({
       productoCodigo: ['', Validators.required],
       cantidad: ['', [Validators.required, Validators.min(1)]]
+    });
+  }
+
+  ngOnInit() {
+    this.productoService.getProductosConStock().subscribe(productos => {
+      this.productos = productos;
     });
   }
 

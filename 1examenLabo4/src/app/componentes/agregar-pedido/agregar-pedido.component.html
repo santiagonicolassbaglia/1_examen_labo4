@@ -3,7 +3,12 @@
     <form [formGroup]="pedidoForm" (ngSubmit)="agregarPedido()">
       <div class="form-group">
         <label for="productoCodigo">Código del Producto</label>
-        <input type="text" id="productoCodigo" formControlName="productoCodigo" class="form-control">
+        <select id="productoCodigo" formControlName="productoCodigo" class="form-control">
+          <option value="">Seleccione un producto</option>
+          <option *ngFor="let producto of productos" [value]="producto.codigo">
+            {{ producto.codigo }} - {{ producto.descripcion }}
+          </option>
+        </select>
         <div *ngIf="!productoValido" class="text-danger">Producto no válido.</div>
       </div>
       <div class="form-group">

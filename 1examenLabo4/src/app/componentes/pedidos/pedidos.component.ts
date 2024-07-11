@@ -21,6 +21,25 @@ import { ListarContainersComponent } from '../listar-containers/listar-container
 })
 export class PedidosComponent {
   selectedContainer: Container | null = null;
+  pedidoForm: FormGroup;
+  productos: Producto[] = [];
+
+  constructor(
+    private fb: FormBuilder,
+    private pedidoService: PedidoService,
+    private productoService: ProductoService
+  ) {
+    this.pedidoForm = this.fb.group({
+      productoId: ['', Validators.required],
+      cantidad: [1, [Validators.required, Validators.min(1)]]
+    });
+  }
+
+  ngOnInit(): void {
+    this.productoService.getProductosConStock().subscribe(productos => {
+      this.productos = productos;
+    });
+  }
 
   onContainerSelected(event: { container: Container, action: string }) {
     this.selectedContainer = event.container;
@@ -28,6 +47,22 @@ export class PedidosComponent {
 
   onPedidoCreado(pedido: Pedido) {
     console.log('Pedido creado:', pedido);
-     
+  }
+
+  onSubmit(): void {
+    if (this.pedidoForm.valid && this.selectedContainer) {
+      const { productoId, cantidad } = this.pedidoForm.value;
+      const producto = this.productos.find(p => p.codigo === productoId);
+      if (producto) {
+        const nuevoPedido = new Pedido(producto.codigo, producto.descripcion, cantidad, new Date(), this.selectedContainer.codigo);
+        this.pedidoService.createPedido(nuevoPedido).then(() => {
+          console.log('Pedido creado correctamente');
+          this.onPedidoCreado(nuevoPedido);
+          this.pedidoForm.reset({ cantidad: 1 });
+        }).catch(error => {
+          console.error('Error al crear el pedido:', error);
+        });
+      }
+    }
   }
 }

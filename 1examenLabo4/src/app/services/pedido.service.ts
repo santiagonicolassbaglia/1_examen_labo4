@@ -8,17 +8,10 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
   providedIn: 'root'
 })
 export class PedidoService {
-  private collectionName = 'pedidos';
-
   constructor(private firestore: AngularFirestore) {}
 
   createPedido(pedido: Pedido): Promise<void> {
     const id = this.firestore.createId();
-    pedido.id = id;
-    return this.firestore.collection(this.collectionName).doc(id).set(pedido);
-  }
-
-  getPedidos(): Observable<Pedido[]> {
-    return this.firestore.collection<Pedido>(this.collectionName).valueChanges();
+    return this.firestore.collection('pedidos').doc(id).set(pedido.toPlainObject());
   }
 }

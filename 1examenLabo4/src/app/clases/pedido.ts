@@ -1,16 +1,18 @@
 export class Pedido {
-    id: string;
-    productoId: string;
-    productoNombre: string;
-    cantidad: number;
-    fecha: Date;
+    constructor(
+      public productoId: string,
+      public descripcion: string,
+      public cantidad: number,
+      public fecha: Date
+    ) {}
   
-    constructor(productoId: string, productoNombre: string, cantidad: number, fecha: Date) {
-      this.id = '';
-      this.productoId = productoId;
-      this.productoNombre = productoNombre;
-      this.cantidad = cantidad;
-      this.fecha = fecha;
+    toPlainObject() {
+      return {
+        productoId: this.productoId,
+        descripcion: this.descripcion,
+        cantidad: this.cantidad,
+        fecha: this.fecha
+      };
     }
   }
   
